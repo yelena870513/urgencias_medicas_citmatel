@@ -15,4 +15,13 @@ class Contenido {
     this.orden,
     this.image
   });
+  factory Contenido.fromJson(Map<String, dynamic> contenido) {
+    return Contenido(
+          id: contenido['id'],
+          titulo: contenido['titulo'],
+          orden: contenido['orden'],
+          texto: contenido['texto'],
+          tema: Tema.fromJson(contenido['tema'])
+        );
+  }
 }

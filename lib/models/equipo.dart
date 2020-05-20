@@ -20,4 +20,8 @@ class Equipo {
     this.tag
   });
 
+  factory Equipo.fromJson(Map<String, dynamic> equipo) {
+    return Equipo(name: equipo['name']);
+  }
+
 }

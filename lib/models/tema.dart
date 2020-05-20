@@ -13,4 +13,13 @@ class Tema {
     this.image,
     this.orden,
   });
+
+  factory Tema.fromJson(Map<String, dynamic> tema) {
+    return Tema(
+          id: tema['id'],
+          titulo: tema['titulo'],
+          image: tema['img'],
+          orden: tema['orden']
+        );
+  }
 }

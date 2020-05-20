@@ -1,14 +1,14 @@
 import 'dart:convert';
-
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
 import 'package:urgencias_flutter/models/tema.dart';
 
-class Store extends Model {
+class StoreModel extends Model {
   List<Contenido> _contenidos = [];
   List<Tema> _temas = [];
   List<Equipo> _equipos = [];
+  final String _temaPath = 'assets/temas/';
 
   List<Contenido> get contenidos {
     return List.from(_contenidos);
@@ -20,6 +20,10 @@ class Store extends Model {
 
   List<Equipo> get equipos {
     return List.from(_equipos);
+  }
+
+  String get pathTema {
+    return _temaPath;
   }
 
   void addContenido(Contenido contenido) {
@@ -39,37 +43,32 @@ class Store extends Model {
 
   void populateLists(String text) {
     if (text.length > 0) {
-      final parsedMap = json.decode(text).cast<Map<String, dynamic>>();
-      final List<Map<String, dynamic>> contenidos = parsedMap['contenido'];
-      final List<Map<String, dynamic>> temas = parsedMap['tema'];
-      final List<Map<String, dynamic>> equipos = parsedMap['creditos'];
-      // load contenido
-      contenidos.forEach((c) => {
-        _contenidos.add(Contenido(
-          id: int.parse(c['id']),
-          titulo: c['titulo'],
-          orden: int.parse(c['orden']),
-          texto: c['texto'],
-          tema: Tema(
-            orden: c['tema']['orden'],
-            id: c['tema']['id'],
-            titulo: c['tema']['titulo'],
-            )
-        ))
-      });
+      _contenidos.clear();
+      _temas.clear();
+      _equipos.clear();
+      
+      final Map<String, dynamic> parsedMap = json.decode(text);
+      final List<dynamic> contenidos = parsedMap['contenido'];
+      final List<dynamic> temas = parsedMap['tema'];
+      final List<dynamic> equipos = parsedMap['creditos'];
 
-      for (var item in temas) {
-        _temas.add(Tema(
-          id: int.parse(item['id']),
-          titulo: item['titulo'],
-          image: item['img'],
-          orden: int.parse(item['orden'])
-        ));
-      }
+      _contenidos = contenidos.map((f) => Contenido.fromJson(f)).toList();
+      _contenidos.sort((a, b) => a.orden - a.orden);
+      _temas = temas.map((f) => Tema.fromJson(f)).toList();
+      _temas.sort((a, b) => a.orden - b.orden);
+      _equipos = equipos.map((f) => Equipo.fromJson(f)).toList();
 
-      _equipos = equipos.map((Map<String,dynamic> l) {
-        return Equipo(name: l['name']);
-      });    
+      notifyListeners();
     }
+  }
+
+  int getTemasCount(Tema tema)
+  {
+    return _contenidos.where((Contenido contenido) => contenido.tema.id == tema.id).length;
+  }
+
+  int getContenidos()
+  {
+    return _contenidos.length;
   }
 }
