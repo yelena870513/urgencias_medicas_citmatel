@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/app_theme.dart';
+import 'package:urgencias_flutter/urgencias/contenido_view.dart';
 import 'package:urgencias_flutter/urgencias/hotel_home_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/urgencias/temas_view.dart';
@@ -57,6 +58,13 @@ class _MyAppState extends State<MyApp> {
           return MaterialPageRoute<bool>(
               builder: (BuildContext context) => TemasView(index));
         }
+
+        if (pathElements[1] == 'contenido') {
+          final int contenidoIndex = int.parse(pathElements[2]);
+          return MaterialPageRoute<bool>(
+              builder: (BuildContext context) => ContenidoView(contenidoIndex));
+        }
+
         return null;
       },
     );

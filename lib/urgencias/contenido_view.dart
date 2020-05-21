@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/tema.dart';
-import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:urgencias_flutter/store/store.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
+import 'package:flutter_html/flutter_html.dart';
 
-class TemasView extends StatefulWidget {
-  final int temaIndex;
-  final _prefix = 'assets/temas/';
-  final _logos = 'assets/logos/';
-  TemasView(this.temaIndex);
+class ContenidoView extends StatefulWidget {
+  final int contenidoId;
+  ContenidoView(this.contenidoId);
   @override
-  _TemasViewState createState() => _TemasViewState();
+  _ContenidoViewState createState() => _ContenidoViewState();
 }
 
-class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
+class _ContenidoViewState extends State<ContenidoView>
+    with TickerProviderStateMixin {
   final double infoHeight = 364.0;
   AnimationController animationController;
   Animation<double> animation;
@@ -55,9 +55,8 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
         24.0;
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      Tema tema = model.temas.elementAt(widget.temaIndex);
-      List<Contenido> contenidos =
-          model.contenidos.where((c) => c.tema.id == tema.id).toList();
+      Contenido reader = model.contenidos.firstWhere((Contenido f) => f.id == widget.contenidoId);
+      Tema tema = model.temas.firstWhere((Tema f) => f.id == reader.tema.id);
       return Container(
         color: ListAppTheme.nearlyWhite,
         child: Scaffold(
@@ -68,7 +67,8 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 1.2,
-                    child: Image.asset(widget._prefix + tema.image),
+                    child:
+                        Image.asset('assets/temas/' + tema.image),
                   ),
                 ],
               ),
@@ -107,7 +107,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                               padding: const EdgeInsets.only(
                                   top: 32.0, left: 18, right: 16),
                               child: Text(
-                                tema.titulo,
+                                reader.titulo,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -117,53 +117,19 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 16, right: 16, bottom: 8, top: 16),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    child: Row(
-                                      children: <Widget>[
-                                        Text(
-                                          contenidos.length.toString(),
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w200,
-                                            fontSize: 22,
-                                            letterSpacing: 0.27,
-                                            color: ListAppTheme.grey,
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.bookmark_border,
-                                          color: ListAppTheme.nearlyBlue,
-                                          size: 24,
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
                             Expanded(
-                                child: AnimatedOpacity(
-                              duration: const Duration(milliseconds: 500),
-                              opacity: opacity1,
-                              child: Container(
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap: true,
-                                  itemBuilder:
-                                      (BuildContext context, int index) =>
-                                          getTimeBoxUI('', contenidos[index]),
-                                  itemCount: contenidos.length,
+                              child: AnimatedOpacity(
+                                duration: const Duration(milliseconds: 500),
+                                opacity: opacity2,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 16, right: 16, top: 8, bottom: 8),
+                                  child: SingleChildScrollView(
+                                    child: Html(data: reader.texto),
+                                  ),
                                 ),
                               ),
-                            )),
+                            ),
                             SizedBox(
                               height: MediaQuery.of(context).padding.bottom,
                             )
@@ -190,12 +156,12 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                       width: 60,
                       height: 60,
                       child: Center(
-                          child: Image.asset(
-                        widget._logos + tema.image,
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.cover,
-                      )),
+                        child: Image.asset(
+                          'assets/logos/' + tema.image,
+                          width: 32,
+                          height: 32,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -229,7 +195,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
     });
   }
 
-  Widget getTimeBoxUI(String text1, Contenido contenido) {
+  Widget getTimeBoxUI(String text1, String txt2) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -260,18 +226,15 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                   color: ListAppTheme.nearlyBlue,
                 ),
               ),
-              InkWell(
-                child: Text(
-                  contenido.titulo,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w200,
-                    fontSize: 14,
-                    letterSpacing: 0.27,
-                    color: ListAppTheme.grey,
-                  ),
+              Text(
+                txt2,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  fontSize: 14,
+                  letterSpacing: 0.27,
+                  color: ListAppTheme.grey,
                 ),
-                onTap:() => Navigator.pushNamed(context, '/contenido/' + contenido.id.toString()) ,
               ),
             ],
           ),
