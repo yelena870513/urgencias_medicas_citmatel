@@ -182,7 +182,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                   scale: CurvedAnimation(
                       parent: animationController, curve: Curves.fastOutSlowIn),
                   child: Card(
-                    color: ListAppTheme.nearlyBlue,
+                    color: Colors.lightBlue.withGreen(5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/tema.dart';
 import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:flutter_html/flutter_html.dart';
+
+import 'hotel_app_theme.dart';
 
 class ContenidoView extends StatefulWidget {
   final int contenidoId;
@@ -17,6 +20,8 @@ class _ContenidoViewState extends State<ContenidoView>
     with TickerProviderStateMixin {
   final double infoHeight = 364.0;
   AnimationController animationController;
+  ScrollController _scrollController = new ScrollController();
+  bool _showFab = false;
   Animation<double> animation;
   double opacity1 = 0.0;
   double opacity2 = 0.0;
@@ -30,6 +35,13 @@ class _ContenidoViewState extends State<ContenidoView>
         curve: Interval(0, 1.0, curve: Curves.fastOutSlowIn)));
     setData();
     super.initState();
+    handleScroll();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(() {});
+    super.dispose();
   }
 
   Future<void> setData() async {
@@ -48,6 +60,32 @@ class _ContenidoViewState extends State<ContenidoView>
     });
   }
 
+  void showScrollButton() {
+    setState(() {
+      _showFab = true;
+    });
+  }
+
+  void hideScrollButton() {
+    setState(() {
+      _showFab = false;
+    });
+  }
+
+  void handleScroll() async {
+    _scrollController.addListener(() {
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        showScrollButton();
+      }
+
+      if (_scrollController.position.userScrollDirection ==
+          ScrollDirection.forward) {
+        hideScrollButton();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
@@ -55,7 +93,8 @@ class _ContenidoViewState extends State<ContenidoView>
         24.0;
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      Contenido reader = model.contenidos.firstWhere((Contenido f) => f.id == widget.contenidoId);
+      Contenido reader = model.contenidos
+          .firstWhere((Contenido f) => f.id == widget.contenidoId);
       Tema tema = model.temas.firstWhere((Tema f) => f.id == reader.tema.id);
       return Container(
         color: ListAppTheme.nearlyWhite,
@@ -67,8 +106,7 @@ class _ContenidoViewState extends State<ContenidoView>
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 1.2,
-                    child:
-                        Image.asset('assets/temas/' + tema.image),
+                    child: Image.asset('assets/temas/' + tema.image),
                   ),
                 ],
               ),
@@ -117,7 +155,7 @@ class _ContenidoViewState extends State<ContenidoView>
                                 ),
                               ),
                             ),
-                            Expanded(
+                            Expanded(                              
                               child: AnimatedOpacity(
                                 duration: const Duration(milliseconds: 500),
                                 opacity: opacity2,
@@ -125,14 +163,23 @@ class _ContenidoViewState extends State<ContenidoView>
                                   padding: const EdgeInsets.only(
                                       left: 16, right: 16, top: 8, bottom: 8),
                                   child: SingleChildScrollView(
-                                    child: Html(data: reader.texto),
+                                    controller: _scrollController,
+                                    child: Html(
+                                      data: reader.texto,
+                                      onImageTap: (src) {
+                                        print(src);
+                                      },
+                                      onImageError: (exception, stackTrace) {
+                                        print(exception);
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).padding.bottom,
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -148,7 +195,7 @@ class _ContenidoViewState extends State<ContenidoView>
                   scale: CurvedAnimation(
                       parent: animationController, curve: Curves.fastOutSlowIn),
                   child: Card(
-                    color: ListAppTheme.nearlyBlue,
+                    color: Colors.lightBlue.withGreen(5),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,
@@ -189,6 +236,16 @@ class _ContenidoViewState extends State<ContenidoView>
                 ),
               )
             ],
+          ),
+          floatingActionButton: Visibility(
+            visible: _showFab,
+            child: FloatingActionButton(
+                child: Icon(Icons.arrow_upward),
+                backgroundColor: Colors.lightBlue.withOpacity(0.5),
+                onPressed: () {
+                  _scrollController.jumpTo(0.0);
+                  hideScrollButton();
+                }),
           ),
         ),
       );

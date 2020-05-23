@@ -9,6 +9,7 @@ class StoreModel extends Model {
   List<Tema> _temas = [];
   List<Equipo> _equipos = [];
   final String _temaPath = 'assets/temas/';
+  bool showContenidoScroll = false;
 
   List<Contenido> get contenidos {
     return List.from(_contenidos);
@@ -70,5 +71,10 @@ class StoreModel extends Model {
   int getContenidos()
   {
     return _contenidos.length;
+  }
+
+  void toggleContenidoScroll(showScroll) {
+    showContenidoScroll = showScroll;
+    notifyListeners();
   }
 }
