@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:urgencias_flutter/models/tema.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
 
 import 'hotel_app_theme.dart';
 
@@ -100,9 +101,7 @@ class HotelListView extends StatelessWidget {
                                                 Icon(
                                                   Icons.library_books,
                                                   size: 12,
-                                                  color: HotelAppTheme
-                                                          .buildLightTheme()
-                                                      .primaryColor,
+                                                  color: ListAppTheme.nearlyBlue,
                                                 ),
                                                 SizedBox(
                                                   width: 8,
@@ -144,8 +143,7 @@ class HotelListView extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.local_hospital,
-                                  color: HotelAppTheme.buildLightTheme()
-                                      .primaryColor,
+                                  color: ListAppTheme.nearlyBlue,
                                 ),
                               ),
                             ),

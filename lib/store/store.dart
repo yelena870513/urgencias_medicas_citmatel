@@ -3,11 +3,13 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
 import 'package:urgencias_flutter/models/tema.dart';
+import 'package:urgencias_flutter/models/question.dart';
 
 class StoreModel extends Model {
   List<Contenido> _contenidos = [];
   List<Tema> _temas = [];
   List<Equipo> _equipos = [];
+  List<Question> _questions = [];
   final String _temaPath = 'assets/temas/';
   bool showContenidoScroll = false;
 
@@ -61,6 +63,17 @@ class StoreModel extends Model {
 
       notifyListeners();
     }
+  }
+
+  void loadQuestions(String text)
+  {
+    if (text.length > 0) {
+      _questions.clear();
+      final List<dynamic> parsedMap = json.decode(text)['preguntas'];
+      _questions = parsedMap.map((f) => Question.fromJson(f)).toList();
+      
+    }
+
   }
 
   int getTemasCount(Tema tema)

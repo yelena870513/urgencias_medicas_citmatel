@@ -1735,60 +1735,94 @@
     {
       "cargo": "DIRECCIÓN DE PROYECTO",
       "name": "Mayling Mirabal Olivera",
-      "order": "1",
-      "tipo": "equipo"
+      "order": 1,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 1
     },
     {
       "cargo": "PROVEEDOR DE CONTENIDOS",
       "name": "Rafael Ernesto Machado Martínez, Anselmo Antonio Abdo Cuza",
-      "order": "2",
-      "tipo": "equipo"
+      "order": 2,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 2
     },
     {
       "cargo": "DISEÑO Y PROGRAMACIÓN",
       "name": "Yelena Islen San Juan",
-      "order": "3",
-      "tipo": "equipo"
+      "order": 3,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 3
     },
     {
       "cargo": "EDICIÓN DE IMÁGENES",
       "name": "Marcos J. Nicanor Hernández",
-      "order": "4",
-      "tipo": "equipo"
+      "order": 4,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 4
     },
     {
       "cargo": "CONTROL DE CALIDAD",
       "name": "Hissel Lamanier Regueiferos",
-      "order": "5",
-      "tipo": "equipo"
+      "order": 5,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 5
     },
     {
       "cargo": "GESTIÓN DE LA CALIDAD Y AUDITORÍA",
       "name": " Mercedes María Sosa Hernández, Anays Gómez García",
-      "order": "6",
-      "tipo": "equipo"
+      "order": 6,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 6
     },
     {
       "cargo": "ISBN",
       "name": "  978-959-237-790-5",
-      "order": "7",
-      "tipo": "equipo"
+      "order": 7,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 7
     },
     {
+      "cargo": "AUTOR",
       "name": "Rafael Ernesto Machado Martínez",
       "subject": "Especialidad Medicina Intensiva y Emergencias",
       "body": "<p>(Villa Clara, Cuba, 1992). Graduado de Doctor en Medicina en el año 2016. Desde entonces trabaja en el Centro de Investigaciones Médico-Quirúrgicas (CIMEQ) Especialidad Medicina Intensiva y Emergencias. Premio al Mérito Científico. Autor y coautor de varios artículos aparecidos en publicaciones cientñificas. Profesor Instructor de la Universidad de Ciencias Médicas de La Habana.</p>",
       "pic": "rafael.png",
       "tag": "Universitario",
-      "tipo": "autor"
+      "tipo": "autor",
+      "order": 8,
+      "id": 8
     },
     {
+      "cargo": "AUTOR",
       "name": "Anselmo Antonio Abdo Cuza",
       "subject": "Especialidad Medicina Intensiva y Emergencias",
       "body": "<p>Doctor en Ciencias Médicas. Especialista de segundo grado en Medicina Intensiva y Emergencias. Miembro de la Comisión de grados científicos del Ministerio de Salud Pública. Premio Academia de Ciencias de Cuba 2009, entre otros reconocimientos y distinciones. Revisor de MEDICC Rewiew, Transplantation, Investigaciones Medicoquirúrgicas, y otras publicaciones periódicas. Más de 80 artículos en revistas y libros nacionales e internacionales.</p>",
       "pic": "anselmo.png",
       "tag": "Universitario",
-      "tipo": "autor"
+      "tipo": "autor",
+      "order":9,
+      "id": 9
     }
   ]
 }

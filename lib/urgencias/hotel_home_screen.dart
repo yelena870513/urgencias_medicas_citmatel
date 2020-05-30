@@ -6,11 +6,11 @@ import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/hotel_list_data.dart';
 import 'package:urgencias_flutter/store/store.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'calendar_popup_view.dart';
 import 'filters_screen.dart';
 import 'hotel_app_theme.dart';
 import 'hotel_list_view.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class HotelHomeScreen extends StatefulWidget {
   final StoreModel model;  
@@ -31,9 +31,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
 
   @override
   void initState() {
-    dataText().then((text){
-          widget.model.populateLists(text);
-        });
     animationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
     super.initState();
@@ -42,11 +39,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 200));
     return true;
-  }
-
-  Future<String> dataText() async {
-   String text = await rootBundle.loadString('assets/data/multimedia.content.json');
-   return text;
   }
 
   @override
@@ -386,7 +378,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
           ),
           Container(
             decoration: BoxDecoration(
-              color: HotelAppTheme.buildLightTheme().primaryColor,
+              color: ListAppTheme.nearlyBlue,
               borderRadius: const BorderRadius.all(
                 Radius.circular(38.0),
               ),
@@ -492,8 +484,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(FontAwesomeIcons.fileSignature,
-                                color: HotelAppTheme.buildLightTheme()
-                                    .primaryColor),
+                                color: ListAppTheme.nearlyBlue),
                           ),
                         ],
                       ),
@@ -571,7 +562,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
             Expanded(
               child: Center(
                 child: Text(
-                  'Temas',
+                  'Urgencias Médicas',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 22,
@@ -592,10 +583,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       borderRadius: const BorderRadius.all(
                         Radius.circular(32.0),
                       ),
-                      onTap: () {},
+                      onTap: () => Navigator.pushNamed(context, '/author'),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.people),
+                        child: Icon(Icons.people, color: ListAppTheme.nearlyBlue),
                       ),
                     ),
                   ),
@@ -605,10 +596,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       borderRadius: const BorderRadius.all(
                         Radius.circular(32.0),
                       ),
-                      onTap: () {},
+                      onTap: () => Navigator.pushNamed(context, '/credits'),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(FontAwesomeIcons.hammer),
+                        child: Icon(Icons.memory, color: ListAppTheme.nearlyBlue),
                       ),
                     ),
                   ),

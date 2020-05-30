@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/app_theme.dart';
+import 'package:urgencias_flutter/urgencias/autor_view.dart';
 import 'package:urgencias_flutter/urgencias/contenido_view.dart';
+import 'package:urgencias_flutter/urgencias/creditos_view.dart';
 import 'package:urgencias_flutter/urgencias/hotel_home_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/urgencias/splash_screen.dart';
@@ -49,9 +51,11 @@ class _MyAppState extends State<MyApp> {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: SplashScreen(),
+      home: SplashScreen(widget.model),
       routes: {
         '/home': (BuildContext context) => HotelHomeScreen(widget.model),
+        '/credits': (BuildContext context) => CreditosView(),
+        '/author': (BuildContext context) => AutorView(),
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');

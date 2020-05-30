@@ -29,6 +29,7 @@ dependencies:
   intl: 0.16.0
   flutter_widget_from_html_core: ^0.3.3+4
   flutter_html: 0.11.1
+  carousel_slider: ^1.4.1
  # webview_flutter: ^0.3.15+1
  # flutter_html_renderer: ^0.1.2
 
@@ -57,6 +58,7 @@ flutter:
     - assets/fitness_app/
     - assets/hotel/
     - assets/data/multimedia.content.json
+    - assets/data/preguntas.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

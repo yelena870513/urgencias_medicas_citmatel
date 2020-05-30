@@ -1,27 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:scoped_model/scoped_model.dart';
-import 'package:urgencias_flutter/models/contenido.dart';
-import 'package:urgencias_flutter/models/tema.dart';
-import 'package:urgencias_flutter/store/store.dart';
-import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:urgencias_flutter/urgencias/image_screen.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:urgencias_flutter/models/equipo.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
+import 'package:urgencias_flutter/store/store.dart';
 
-
-class ContenidoView extends StatefulWidget {
-  final int contenidoId;
-  ContenidoView(this.contenidoId);
+class AutorView extends StatefulWidget {
+  AutorView();
   @override
-  _ContenidoViewState createState() => _ContenidoViewState();
+  _AutorViewState createState() => _AutorViewState();
 }
 
-class _ContenidoViewState extends State<ContenidoView>
-    with TickerProviderStateMixin {
+class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
   final double infoHeight = 364.0;
   AnimationController animationController;
-  ScrollController _scrollController = new ScrollController();
-  bool _showFab = false;
   Animation<double> animation;
   double opacity1 = 0.0;
   double opacity2 = 0.0;
@@ -35,13 +27,6 @@ class _ContenidoViewState extends State<ContenidoView>
         curve: Interval(0, 1.0, curve: Curves.fastOutSlowIn)));
     setData();
     super.initState();
-    handleScroll();
-  }
-
-  @override
-  void dispose() {
-    _scrollController.removeListener(() {});
-    super.dispose();
   }
 
   Future<void> setData() async {
@@ -60,32 +45,6 @@ class _ContenidoViewState extends State<ContenidoView>
     });
   }
 
-  void showScrollButton() {
-    setState(() {
-      _showFab = true;
-    });
-  }
-
-  void hideScrollButton() {
-    setState(() {
-      _showFab = false;
-    });
-  }
-
-  void handleScroll() async {
-    _scrollController.addListener(() {
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.reverse) {
-        showScrollButton();
-      }
-
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        hideScrollButton();
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
@@ -93,9 +52,10 @@ class _ContenidoViewState extends State<ContenidoView>
         24.0;
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      Contenido reader = model.contenidos
-          .firstWhere((Contenido f) => f.id == widget.contenidoId);
-      Tema tema = model.temas.firstWhere((Tema f) => f.id == reader.tema.id);
+      List<Equipo> equipos = model.equipos.where((e) {
+        return e.id == 8 || e.id == 9;
+      }).toList();
+      equipos.sort((e1, e2) => e1.order - e2.order);
       return Container(
         color: ListAppTheme.nearlyWhite,
         child: Scaffold(
@@ -106,7 +66,7 @@ class _ContenidoViewState extends State<ContenidoView>
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 1.2,
-                    child: Image.asset('assets/temas/' + tema.image),
+                    child: Image.asset('assets/images/screen.png'),
                   ),
                 ],
               ),
@@ -145,7 +105,7 @@ class _ContenidoViewState extends State<ContenidoView>
                               padding: const EdgeInsets.only(
                                   top: 32.0, left: 18, right: 16),
                               child: Text(
-                                reader.titulo,
+                                'Autores',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -155,35 +115,38 @@ class _ContenidoViewState extends State<ContenidoView>
                                 ),
                               ),
                             ),
-                            Expanded(                              
-                              child: AnimatedOpacity(
-                                duration: const Duration(milliseconds: 500),
-                                opacity: opacity2,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16, top: 8, bottom: 8),
-                                  child: SingleChildScrollView(
-                                    controller: _scrollController,
-                                    child: Html(
-                                      data: reader.texto,
-                                      onImageTap: (src) {
-                                        print(src);
-                                        Navigator.push(context, MaterialPageRoute(builder: (_){
-                                          final List<String> pathElements = src.split(':'); 
-                                          return ImageScreen(pathElements[1]);
-                                        }));
-                                      },
-                                      onImageError: (exception, stackTrace) {
-                                        print(exception);
-                                      },
-                                    ),
-                                  ),
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 16, right: 16, bottom: 8, top: 16),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(
+                                    child: SizedBox(),
+                                  )
+                                ],
                               ),
                             ),
+                            Expanded(
+                                child: AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              opacity: opacity1,
+                              child: Container(
+                                child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  itemBuilder:
+                                      (BuildContext context, int index) =>
+                                          getTimeBoxUI(equipos[index]),
+                                  itemCount: equipos.length,
+                                ),
+                              ),
+                            )),
                             SizedBox(
                               height: MediaQuery.of(context).padding.bottom,
-                            ),
+                            )
                           ],
                         ),
                       ),
@@ -207,12 +170,12 @@ class _ContenidoViewState extends State<ContenidoView>
                       width: 60,
                       height: 60,
                       child: Center(
-                        child: Image.asset(
-                          'assets/logos/' + tema.image,
-                          width: 32,
-                          height: 32,
-                        ),
-                      ),
+                          child: Image.asset(
+                        'assets/logos/urgencias.png',
+                        width: 32,
+                        height: 32,
+                        fit: BoxFit.cover,
+                      )),
                     ),
                   ),
                 ),
@@ -241,22 +204,12 @@ class _ContenidoViewState extends State<ContenidoView>
               )
             ],
           ),
-          floatingActionButton: Visibility(
-            visible: _showFab,
-            child: FloatingActionButton(
-                child: Icon(Icons.arrow_upward),
-                backgroundColor: Colors.lightBlue.withOpacity(0.5),
-                onPressed: () {
-                  _scrollController.jumpTo(0.0);
-                  hideScrollButton();
-                }),
-          ),
         ),
       );
     });
   }
 
-  Widget getTimeBoxUI(String text1, String txt2) {
+  Widget getTimeBoxUI(Equipo equipo) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -277,8 +230,20 @@ class _ContenidoViewState extends State<ContenidoView>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/' + equipo.pic),
+                        fit: BoxFit.fill)),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               Text(
-                text1,
+                equipo.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
@@ -287,15 +252,11 @@ class _ContenidoViewState extends State<ContenidoView>
                   color: ListAppTheme.nearlyBlue,
                 ),
               ),
-              Text(
-                txt2,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  fontSize: 14,
-                  letterSpacing: 0.27,
-                  color: ListAppTheme.grey,
+              InkWell(
+                child: Html(
+                  data: equipo.body,
                 ),
+                onTap: () {},
               ),
             ],
           ),

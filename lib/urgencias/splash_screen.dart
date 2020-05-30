@@ -1,9 +1,14 @@
 import 'dart:async';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:scoped_model/scoped_model.dart';
+import 'package:urgencias_flutter/store/store.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
+  final StoreModel model;
+  SplashScreen(this.model); 
   @override
   State<StatefulWidget> createState() {
     return SplashScreenState();
@@ -18,12 +23,37 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    return new Timer(Duration(seconds: 5), onDoneLoading);
+    String questions = await loadQuestion();
+    widget.model.loadQuestions(questions);
+    String content = await dataText();
+    widget.model.populateLists(content);
+    return new Timer(Duration(microseconds: 300), onDoneLoading);
+  }
+
+  Future<String> loadQuestion() async {
+   String text = await rootBundle.loadString('assets/data/preguntas.json');
+   return text;
+  }
+
+  Future<String> dataText() async {
+   String text = await rootBundle.loadString('assets/data/multimedia.content.json');
+   return text;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ScopedModelDescendant<StoreModel>(
+        builder: (BuildContext context, Widget child, StoreModel model) {
+      return buildSplash(model);
+    });
+  }
+
+  void onDoneLoading() {
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+
+  Widget buildSplash(StoreModel model) {
+        return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/screen.png'),
@@ -33,9 +63,5 @@ class SplashScreenState extends State<SplashScreen> {
             valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlue)),
       ),
     );
-  }
-
-  void onDoneLoading() {
-    Navigator.pushReplacementNamed(context, '/home');
   }
 }
