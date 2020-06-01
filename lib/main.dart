@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/home': (BuildContext context) => HotelHomeScreen(widget.model),
         '/credits': (BuildContext context) => CreditosView(),
-        '/author': (BuildContext context) => AutorView(),
+        '/author': (BuildContext context) => AutorView()
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');

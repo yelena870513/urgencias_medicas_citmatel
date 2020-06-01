@@ -6,10 +6,10 @@ import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/hotel_list_data.dart';
 import 'package:urgencias_flutter/store/store.dart';
+import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
+import 'package:urgencias_flutter/urgencias/ejercicios_view.dart';
 import 'calendar_popup_view.dart';
-import 'filters_screen.dart';
-import 'hotel_app_theme.dart';
 import 'hotel_list_view.dart';
 
 class HotelHomeScreen extends StatefulWidget {
@@ -56,9 +56,11 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   }
 
   Theme getTheme(BuildContext context, StoreModel model) {
+    double cWidth = MediaQuery.of(context).size.width*0.8;
     return Theme(
       data: HotelAppTheme.buildLightTheme(),
       child: Container(
+        width: cWidth,
         child: Scaffold(
           body: Stack(
             children: <Widget>[
@@ -85,7 +87,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                 return Column(
                                   children: <Widget>[
                                     getSearchBarUI(),
-                                    getTimeDateUI(),
+                                    getTimeDateUI(model),
                                   ],
                                 );
                               }, childCount: 1),
@@ -94,7 +96,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                               pinned: true,
                               floating: true,
                               delegate: ContestTabHeader(
-                                getFilterBarUI(),
+                                getFilterBarUI(model),
                               ),
                             ),
                           ];
@@ -219,7 +221,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-  Widget getTimeDateUI() {
+  Widget getTimeDateUI(StoreModel model) {
     return Padding(
       padding: const EdgeInsets.only(left: 18, bottom: 16),
       child: Row(
@@ -255,7 +257,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                             'Choose date',
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
-                                fontSize: 16,
+                                fontSize: model.fontSize,
                                 color: Colors.grey.withOpacity(0.8)),
                           ),
                           const SizedBox(
@@ -265,7 +267,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                             '${DateFormat("dd, MMM").format(startDate)} - ${DateFormat("dd, MMM").format(endDate)}',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
-                              fontSize: 16,
+                              fontSize: model.fontSize,
                             ),
                           ),
                         ],
@@ -308,22 +310,39 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Number of Rooms',
+                            'Ajuste de Fuentes',
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
-                                fontSize: 16,
+                                fontSize: model.fontSize,
                                 color: Colors.grey.withOpacity(0.8)),
                           ),
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
-                            '1 Room - 2 Adults',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w100,
-                              fontSize: 16,
-                            ),
-                          ),
+                          Row(
+                            children: <Widget>[
+                              InkWell(
+                                child: Icon(
+                                  Icons.vertical_align_top,
+                                  color: ListAppTheme.nearlyBlue,
+                                  ),
+                                  onTap: (){
+                                    model.increaseRegularFontSize();
+                                    model.increaseThemeFontSize();
+                                  },
+                              ),
+                              InkWell(
+                                child: Icon(
+                                  Icons.text_rotate_vertical,
+                                  color: ListAppTheme.nearlyBlue,
+                                  ),
+                                  onTap: () {
+                                     model.decreaseRegularFontSize();
+                                    model.decreaseThemeFontSize();
+                                  },
+                              )
+                            ],
+                          )
                         ],
                       ),
                     ),
@@ -412,7 +431,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-  Widget getFilterBarUI() {
+  Widget getFilterBarUI(StoreModel model) {
     return Stack(
       children: <Widget>[
         Positioned(
@@ -446,7 +465,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       '${widget.model.getContenidos().toString()} contenidos',
                       style: TextStyle(
                         fontWeight: FontWeight.w100,
-                        fontSize: 16,
+                        fontSize: model.fontSize,
                       ),
                     ),
                   ),
@@ -466,7 +485,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       Navigator.push<dynamic>(
                         context,
                         MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => FiltersScreen(),
+                            builder: (BuildContext context) => EjerciciosScreen(),
                             fullscreenDialog: true),
                       );
                     },
@@ -478,7 +497,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                             'Ejercicios',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
-                              fontSize: 16,
+                              fontSize: model.fontSize,
                             ),
                           ),
                           Padding(

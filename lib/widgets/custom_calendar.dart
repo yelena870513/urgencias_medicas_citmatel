@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import 'hotel_app_theme.dart';
+import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
 
 class CustomCalendarView extends StatefulWidget {
   const CustomCalendarView(

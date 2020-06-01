@@ -85,4 +85,22 @@ class ListAppTheme {
     color: lightText, // was lightText
   );
 
+  static const TextStyle questionStyle = TextStyle(
+    fontFamily: 'WorkSans',
+    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    letterSpacing: 0.2,
+    color: nearlyBlack,
+  );
+
+  static const TextStyle questionUnderline = TextStyle(
+    fontFamily: 'WorkSans',
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    letterSpacing: 0.2,
+    color: nearlyBlue,
+    decoration: TextDecoration.underline,
+    decorationColor: nearlyBlue
+  );
+
 }

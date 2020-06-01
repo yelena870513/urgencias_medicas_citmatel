@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:urgencias_flutter/models/popular_filter_list.dart';
-import 'range_slider_view.dart';
+import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
+import 'package:urgencias_flutter/widgets/range_slider_view.dart';
 import 'slider_view.dart';
-import 'hotel_app_theme.dart';
 
 class FiltersScreen extends StatefulWidget {
   @override

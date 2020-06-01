@@ -1,9 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import 'custom_calendar.dart';
-import 'hotel_app_theme.dart';
+import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
+import 'package:urgencias_flutter/widgets/custom_calendar.dart';
 
 class CalendarPopupView extends StatefulWidget {
   const CalendarPopupView(

@@ -159,7 +159,7 @@
     },
     {
       "id":6,
-      "type":"write",
+      "type":"radio",
       "form":"54766c20",
       "formObject":"undefined",
       "group":"8f77872b-35ff-11e8-af44-0242ac120003",
@@ -167,13 +167,15 @@
       "questionSet":[
         {
           "id":"bd14fb8a-35ff-11e8-af44-0242ac120003",
-          "text":"Neumonía."
+          "text":"Neumonía.",
+          "value": true
 
         }
       ,
         {
           "id":"f105a407-35ff-11e8-af44-0242ac120003",
-          "text":"Oclusión Intestinal Alta."
+          "text":"Oclusión Intestinal Alta.",
+          "value": true
 
         }
 
@@ -181,7 +183,7 @@
     },
     {
       "id":9,
-      "type":"write",
+      "type":"radio",
       "form":"b4e5c7e3",
       "formObject":"undefined",
       "group":"bcb77287-3600-11e8-af44-0242ac120003",
@@ -189,7 +191,14 @@
       "questionSet":[
         {
           "id":"c1e4440a-3600-11e8-af44-0242ac120003",
-          "text":"Edema Agudo del Pulmón."
+          "text":"Edema Agudo del Pulmón.",
+           "value": true
+
+        },
+        {
+          "id": "f105a407-35ff-11e8-af44-0242ac128521",
+          "text": "Oclusión Intestinal Alta.",
+           "value": false
 
         }
 

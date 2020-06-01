@@ -1,17 +1,33 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:urgencias_flutter/manager/preference_manager.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
+import 'package:urgencias_flutter/models/question_option.dart';
 import 'package:urgencias_flutter/models/tema.dart';
 import 'package:urgencias_flutter/models/question.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
 
 class StoreModel extends Model {
+
   List<Contenido> _contenidos = [];
   List<Tema> _temas = [];
   List<Equipo> _equipos = [];
   List<Question> _questions = [];
   final String _temaPath = 'assets/temas/';
+
+  Preferences _appPrefereces;
+
+
   bool showContenidoScroll = false;
+  bool showAnswer = false;
+  double fontSize = 16;
+  double maxFontSize = 19;
+  double minFontSize = 12;
+  double themeFontSize = 22;
+  double maxThemeFontSize = 25;
+  double minThemeFontSize = 19;
 
   List<Contenido> get contenidos {
     return List.from(_contenidos);
@@ -23,6 +39,10 @@ class StoreModel extends Model {
 
   List<Equipo> get equipos {
     return List.from(_equipos);
+  }
+
+  List<Question> get questions {
+    return List.from(_questions);
   }
 
   String get pathTema {
@@ -49,7 +69,7 @@ class StoreModel extends Model {
       _contenidos.clear();
       _temas.clear();
       _equipos.clear();
-      
+
       final Map<String, dynamic> parsedMap = json.decode(text);
       final List<dynamic> contenidos = parsedMap['contenido'];
       final List<dynamic> temas = parsedMap['tema'];
@@ -65,29 +85,127 @@ class StoreModel extends Model {
     }
   }
 
-  void loadQuestions(String text)
-  {
+  void loadQuestions(String text) {
     if (text.length > 0) {
       _questions.clear();
       final List<dynamic> parsedMap = json.decode(text)['preguntas'];
       _questions = parsedMap.map((f) => Question.fromJson(f)).toList();
-      
     }
-
   }
 
-  int getTemasCount(Tema tema)
-  {
-    return _contenidos.where((Contenido contenido) => contenido.tema.id == tema.id).length;
+  int getTemasCount(Tema tema) {
+    return _contenidos
+        .where((Contenido contenido) => contenido.tema.id == tema.id)
+        .length;
   }
 
-  int getContenidos()
-  {
+  int getContenidos() {
     return _contenidos.length;
   }
 
   void toggleContenidoScroll(showScroll) {
     showContenidoScroll = showScroll;
     notifyListeners();
+  }
+
+  void setSelectedQuestionOption(QuestionOption questionOption, bool value) {
+    if (_questions.length > 0) {
+      for (int i = 0; i < _questions.length; i++) {
+        Question question = _questions[i];
+        List<QuestionOption> questionSet = question.questionOption;
+        for (int j = 0; j < questionSet.length; j++) {
+          if (questionSet[j].id.compareTo(questionOption.id) == 0) {
+            _questions[i].questionOption[j].isSelected = value;
+            notifyListeners();
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  void clearAnswers() {
+    if (_questions.length > 0) {
+      for (int i = 0; i < _questions.length; i++) {
+        Question question = _questions[i];
+        List<QuestionOption> questionSet = question.questionOption;
+        for (int j = 0; j < questionSet.length; j++) {
+          _questions[i].questionOption[j].isSelected = false;
+        }
+      }
+      notifyListeners();
+    }
+  }
+
+  void toggleAnswers() {
+    showAnswer = !showAnswer;
+    notifyListeners();
+  }
+
+  TextStyle getQuestionStyle(QuestionOption questionOption) {
+    if (showAnswer) {
+      return questionOption.value
+          ? ListAppTheme.questionUnderline
+          : ListAppTheme.questionStyle;
+    }
+    return ListAppTheme.questionStyle;
+  }
+
+  void increaseRegularFontSize() {
+    if (fontSize < maxFontSize) {
+      fontSize ++;
+      notifyListeners();      
+    }
+  }
+
+  void decreaseRegularFontSize() {
+   if (fontSize > minFontSize) {
+      fontSize --;
+      notifyListeners();     
+   }
+  }
+
+  void setRegularFontSize(double pfontSize) {
+    if (pfontSize < maxFontSize) {
+      fontSize = pfontSize;
+      notifyListeners();      
+    }
+  }
+
+  void increaseThemeFontSize() {
+    if(themeFontSize < maxThemeFontSize) {
+      themeFontSize ++;
+      notifyListeners();
+    }    
+  }
+
+  void decreaseThemeFontSize() {
+    if(themeFontSize > minThemeFontSize) {
+       themeFontSize --;
+       notifyListeners();
+    }
+  }
+
+  void setThemeFontSize(double fontSize) {
+    if(fontSize < maxThemeFontSize) {
+      themeFontSize = fontSize;
+      notifyListeners();
+    }
+  }
+
+  void setPreferences() {
+    _appPrefereces.init()
+      .then((value){
+        _appPrefereces = value;
+      });
+  }
+
+  void addFavorite(int contenidoId) {
+    _appPrefereces.addFavorite(contenidoId);
+    notifyListeners();
+  }
+
+  List<int> get favorites {
+    return _appPrefereces.favorites;
   }
 }
