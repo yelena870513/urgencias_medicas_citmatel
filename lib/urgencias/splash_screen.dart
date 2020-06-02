@@ -26,6 +26,7 @@ class SplashScreenState extends State<SplashScreen> {
     String questions = await loadQuestion();
     widget.model.loadQuestions(questions);
     String content = await dataText();
+    widget.model.setPreferences();
     widget.model.populateLists(content);
     return new Timer(Duration(microseconds: 300), onDoneLoading);
   }

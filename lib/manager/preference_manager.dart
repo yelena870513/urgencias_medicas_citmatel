@@ -9,7 +9,7 @@ class Preferences {
   List<int> _contenidos = List<int>();
 
 
-  Preferences._internal();  
+  Preferences._internal() {}
   factory Preferences() =>  instance;
 
   Future<SharedPreferences> get preferences async {
@@ -30,12 +30,22 @@ class Preferences {
   }
 
   int addFavorite(int contenidoId) {
-    _contenidos.add(contenidoId);
+    if (!_contenidos.contains(contenidoId)) {
+        _contenidos.add(contenidoId);
+        return contenidoId;      
+    }
+    return contenidoId;
+  }
+
+  int removeFavorite(int contenidoId) {
+    if (_contenidos.contains(contenidoId)) {
+      _contenidos.remove(contenidoId);      
+    }
     return contenidoId;
   }
 
   Future<bool> commit() async {
-    String chain = _contenidos.map((int c) => c.toString()).join(',');
+    String chain = _contenidos.map((int c) => c.toString()).toList().join(',');
     await _sharedPreferences.setString(CONTENT_KEY, chain);
     return true;
   }

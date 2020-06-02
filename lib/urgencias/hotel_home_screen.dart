@@ -244,7 +244,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       // setState(() {
                       //   isDatePopupOpen = true;
                       // });
-                      showDemoDialog(context: context);
+                      // showDemoDialog(context: context);
+                      Navigator.pushNamed(context, '/favorite');
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(
@@ -254,7 +255,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Choose date',
+                            'Favoritos',
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
                                 fontSize: model.fontSize,

@@ -159,7 +159,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                                   shrinkWrap: true,
                                   itemBuilder:
                                       (BuildContext context, int index) =>
-                                          getTimeBoxUI('', contenidos[index]),
+                                          getTimeBoxUI('', contenidos[index], model),
                                   itemCount: contenidos.length,
                                 ),
                               ),
@@ -229,7 +229,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
     });
   }
 
-  Widget getTimeBoxUI(String text1, Contenido contenido) {
+  Widget getTimeBoxUI(String text1, Contenido contenido, StoreModel model) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -271,7 +271,9 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                     color: ListAppTheme.grey,
                   ),
                 ),
-                onTap:() => Navigator.pushNamed(context, '/contenido/' + contenido.id.toString()) ,
+                onTap:() {
+                  Navigator.pushNamed(context, '/contenido/' + contenido.id.toString());
+                  },
               ),
             ],
           ),

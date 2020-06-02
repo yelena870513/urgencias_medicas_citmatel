@@ -11,6 +11,7 @@ import 'package:urgencias_flutter/urgencias/hotel_home_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/urgencias/splash_screen.dart';
 import 'package:urgencias_flutter/urgencias/temas_view.dart';
+import 'package:urgencias_flutter/urgencias/favorite_screen.dart';
 
 import 'models/tema.dart';
 
@@ -55,7 +56,8 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/home': (BuildContext context) => HotelHomeScreen(widget.model),
         '/credits': (BuildContext context) => CreditosView(),
-        '/author': (BuildContext context) => AutorView()
+        '/author': (BuildContext context) => AutorView(),
+        '/favorite': (BuildContext context) => FavoriteScreen()
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');
@@ -79,9 +81,9 @@ class _MyAppState extends State<MyApp> {
         }
 
         if (pathElements[1] == 'contenido') {
-          final int contenidoIndex = int.parse(pathElements[2]);
+          final int contenidoId = int.parse(pathElements[2]);
           return MaterialPageRoute<bool>(
-              builder: (BuildContext context) => ContenidoView(contenidoIndex));
+              builder: (BuildContext context) => ContenidoView(contenidoId));
         }
 
         return null;

@@ -17,7 +17,7 @@ class StoreModel extends Model {
   List<Question> _questions = [];
   final String _temaPath = 'assets/temas/';
 
-  Preferences _appPrefereces;
+  Preferences _appPrefereces = Preferences();
 
 
   bool showContenidoScroll = false;
@@ -205,7 +205,20 @@ class StoreModel extends Model {
     notifyListeners();
   }
 
+  void removeFavorite(int contenidoId) {
+     _appPrefereces.removeFavorite(contenidoId);
+    notifyListeners();
+  }
+
   List<int> get favorites {
     return _appPrefereces.favorites;
+  }
+
+  bool isFavorite(int contenidoId) {
+    return favorites.contains(contenidoId);
+  }
+
+  void commit() {
+    _appPrefereces.commit();
   }
 }
