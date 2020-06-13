@@ -9,7 +9,7 @@ class Preferences {
   List<int> _contenidos = List<int>();
 
 
-  Preferences._internal() {}
+  Preferences._internal();
   factory Preferences() =>  instance;
 
   Future<SharedPreferences> get preferences async {

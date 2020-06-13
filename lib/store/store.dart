@@ -5,6 +5,7 @@ import 'package:urgencias_flutter/manager/preference_manager.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
 import 'package:urgencias_flutter/models/question_option.dart';
+import 'package:urgencias_flutter/models/search_helper.dart';
 import 'package:urgencias_flutter/models/tema.dart';
 import 'package:urgencias_flutter/models/question.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
@@ -16,9 +17,8 @@ class StoreModel extends Model {
   List<Equipo> _equipos = [];
   List<Question> _questions = [];
   final String _temaPath = 'assets/temas/';
-
   Preferences _appPrefereces = Preferences();
-
+  SearchHelper _searchHelper = SearchHelper();
 
   bool showContenidoScroll = false;
   bool showAnswer = false;
@@ -47,6 +47,49 @@ class StoreModel extends Model {
 
   String get pathTema {
     return _temaPath;
+  }
+
+  String get searchTerm {
+    return _searchHelper.searchTerm;
+  }
+
+  List<int> get searchResults {
+    return _searchHelper.idSearchResults;
+  }
+
+  int getTemasCount(Tema tema) {
+    return _contenidos
+        .where((Contenido contenido) => contenido.tema.id == tema.id)
+        .length;
+  }
+
+   int getContenidos() {
+    return _contenidos.length;
+  }
+
+  TextStyle getQuestionStyle(QuestionOption questionOption) {
+    if (showAnswer) {
+      return questionOption.value
+          ? ListAppTheme.questionUnderline
+          : ListAppTheme.questionStyle;
+    }
+    return ListAppTheme.questionStyle;
+  }
+
+  List<int> get favorites {
+    return _appPrefereces.favorites;
+  }
+
+  bool isFavorite(int contenidoId) {
+    return favorites.contains(contenidoId);
+  }
+
+  int get selectedThemeUI {
+    return _searchHelper.selectedThemeId;
+  }
+
+  List<int> get idSearchResults {
+    return List.from(_searchHelper.idSearchResults);
   }
 
   void addContenido(Contenido contenido) {
@@ -93,16 +136,6 @@ class StoreModel extends Model {
     }
   }
 
-  int getTemasCount(Tema tema) {
-    return _contenidos
-        .where((Contenido contenido) => contenido.tema.id == tema.id)
-        .length;
-  }
-
-  int getContenidos() {
-    return _contenidos.length;
-  }
-
   void toggleContenidoScroll(showScroll) {
     showContenidoScroll = showScroll;
     notifyListeners();
@@ -141,16 +174,7 @@ class StoreModel extends Model {
     showAnswer = !showAnswer;
     notifyListeners();
   }
-
-  TextStyle getQuestionStyle(QuestionOption questionOption) {
-    if (showAnswer) {
-      return questionOption.value
-          ? ListAppTheme.questionUnderline
-          : ListAppTheme.questionStyle;
-    }
-    return ListAppTheme.questionStyle;
-  }
-
+  
   void increaseRegularFontSize() {
     if (fontSize < maxFontSize) {
       fontSize ++;
@@ -208,17 +232,33 @@ class StoreModel extends Model {
   void removeFavorite(int contenidoId) {
      _appPrefereces.removeFavorite(contenidoId);
     notifyListeners();
-  }
-
-  List<int> get favorites {
-    return _appPrefereces.favorites;
-  }
-
-  bool isFavorite(int contenidoId) {
-    return favorites.contains(contenidoId);
-  }
+  } 
 
   void commit() {
     _appPrefereces.commit();
+  }
+
+  void setSearchResults(List<int> results) {
+    _searchHelper.setSearchResults(results);
+    notifyListeners();
+  }
+
+  void addSearchResults(int contenidoId) {
+    _searchHelper.addSearchResult(contenidoId);
+    notifyListeners();
+  }
+
+  void clearSearchResults() {
+    _searchHelper.clearSearchResults();
+    notifyListeners();
+  }
+
+  void setSearchString(String term) {
+    _searchHelper.setSearchTerm(term);
+  }
+
+  void setSelectedUITheme(int themeId) {
+    _searchHelper.setThemeId(themeId);
+    notifyListeners();
   }
 }

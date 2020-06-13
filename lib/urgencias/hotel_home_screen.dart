@@ -2,8 +2,9 @@ import 'dart:ui';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:toast/toast.dart';
 import 'package:urgencias_flutter/models/hotel_list_data.dart';
 import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
@@ -13,7 +14,7 @@ import 'calendar_popup_view.dart';
 import 'hotel_list_view.dart';
 
 class HotelHomeScreen extends StatefulWidget {
-  final StoreModel model;  
+  final StoreModel model;
   HotelHomeScreen(this.model);
 
   @override
@@ -56,7 +57,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   }
 
   Theme getTheme(BuildContext context, StoreModel model) {
-    double cWidth = MediaQuery.of(context).size.width*0.8;
+    double cWidth = MediaQuery.of(context).size.width * 0.8;
     return Theme(
       data: HotelAppTheme.buildLightTheme(),
       child: Container(
@@ -86,7 +87,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                   (BuildContext context, int index) {
                                 return Column(
                                   children: <Widget>[
-                                    getSearchBarUI(),
+                                    getSearchBarUI(model),
                                     getTimeDateUI(model),
                                   ],
                                 );
@@ -109,8 +110,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                             padding: const EdgeInsets.only(top: 8),
                             scrollDirection: Axis.vertical,
                             itemBuilder: (BuildContext context, int index) {
-                              final int count =
-                                  model.temas.length > 10 ? 10 : model.temas.length;
+                              final int count = model.temas.length > 10
+                                  ? 10
+                                  : model.temas.length;
                               final Animation<double> animation =
                                   Tween<double>(begin: 0.0, end: 1.0).animate(
                                       CurvedAnimation(
@@ -120,11 +122,13 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                               curve: Curves.fastOutSlowIn)));
                               animationController.forward();
                               return HotelListView(
-                                callback: () => Navigator.pushNamed(context, '/tema/' + index.toString()),
+                                callback: () => Navigator.pushNamed(
+                                    context, '/tema/' + index.toString()),
                                 tema: model.temas[index],
                                 animation: animation,
                                 animationController: animationController,
-                                contenidoCount: model.getTemasCount(model.temas[index]),
+                                contenidoCount:
+                                    model.getTemasCount(model.temas[index]),
                               );
                             },
                           ),
@@ -158,7 +162,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
             height: MediaQuery.of(context).size.height - 156 - 50,
             child: FutureBuilder<bool>(
               future: getData(),
-              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {        
+              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
                 if (!snapshot.hasData) {
                   return const SizedBox();
                 } else {
@@ -166,8 +170,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                     itemCount: widget.model.temas.length,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
-                      final int count =
-                          widget.model.temas.length > 10 ? 10 : widget.model.temas.length;
+                      final int count = widget.model.temas.length > 10
+                          ? 10
+                          : widget.model.temas.length;
                       final Animation<double> animation =
                           Tween<double>(begin: 0.0, end: 1.0).animate(
                               CurvedAnimation(
@@ -177,11 +182,13 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       animationController.forward();
 
                       return HotelListView(
-                        callback: () => Navigator.pushNamed(context, '/tema/' + index.toString()),
+                        callback: () => Navigator.pushNamed(
+                            context, '/tema/' + index.toString()),
                         tema: widget.model.temas[index],
                         animation: animation,
                         animationController: animationController,
-                        contenidoCount: widget.model.getTemasCount(widget.model.temas[index]),
+                        contenidoCount: widget.model
+                            .getTemasCount(widget.model.temas[index]),
                       );
                     },
                   );
@@ -207,12 +214,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
       );
       hotelListViews.add(
         HotelListView(
-          callback: () => Navigator.pushNamed(context, '/tema/' + i.toString()),
-          tema: widget.model.temas[i],
-          animation: animation,
-          animationController: animationController,
-          contenidoCount: widget.model.getTemasCount(widget.model.temas[i])
-        ),
+            callback: () =>
+                Navigator.pushNamed(context, '/tema/' + i.toString()),
+            tema: widget.model.temas[i],
+            animation: animation,
+            animationController: animationController,
+            contenidoCount: widget.model.getTemasCount(widget.model.temas[i])),
       );
     }
     animationController.forward();
@@ -264,13 +271,14 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           const SizedBox(
                             height: 8,
                           ),
-                          Text(
-                            '${DateFormat("dd, MMM").format(startDate)} - ${DateFormat("dd, MMM").format(endDate)}',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w100,
-                              fontSize: model.fontSize,
-                            ),
-                          ),
+                          SizedBox(
+                              child: Text('Encuentre sus contenidos favoritos',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w100,
+                                    fontSize: model.fontSize,
+                                  ),
+                                  softWrap: true),
+                              width: 150)
                         ],
                       ),
                     ),
@@ -311,7 +319,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Ajuste de Fuentes',
+                            'Notas',
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
                                 fontSize: model.fontSize,
@@ -324,24 +332,19 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                             children: <Widget>[
                               InkWell(
                                 child: Icon(
-                                  Icons.vertical_align_top,
+                                  Icons.note,
                                   color: ListAppTheme.nearlyBlue,
-                                  ),
-                                  onTap: (){
-                                    model.increaseRegularFontSize();
-                                    model.increaseThemeFontSize();
-                                  },
+                                ),
+                                onTap: () {},
                               ),
-                              InkWell(
-                                child: Icon(
-                                  Icons.text_rotate_vertical,
-                                  color: ListAppTheme.nearlyBlue,
-                                  ),
-                                  onTap: () {
-                                     model.decreaseRegularFontSize();
-                                    model.decreaseThemeFontSize();
-                                  },
-                              )
+                              SizedBox(
+                                  child: Text('Mis notas',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w100,
+                                        fontSize: model.fontSize,
+                                      ),
+                                      softWrap: true),
+                                  width: 90)
                             ],
                           )
                         ],
@@ -357,7 +360,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     );
   }
 
-  Widget getSearchBarUI() {
+  Widget getSearchBarUI(StoreModel model) {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
       child: Row(
@@ -382,7 +385,9 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                   padding: const EdgeInsets.only(
                       left: 16, right: 16, top: 4, bottom: 4),
                   child: TextField(
-                    onChanged: (String txt) {},
+                    onChanged: (String txt) {
+                      model.setSearchString(txt);
+                    },
                     style: const TextStyle(
                       fontSize: 18,
                     ),
@@ -417,6 +422,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 ),
                 onTap: () {
                   FocusScope.of(context).requestFocus(FocusNode());
+                  if (model.searchTerm.length < 3) {
+                    Toast.show("Introduzca al menos 3 caracteres", context,
+                        duration: 4, gravity: Toast.CENTER);
+                  } else {
+                    Navigator.pushNamed(context, '/search');
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -486,7 +497,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       Navigator.push<dynamic>(
                         context,
                         MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => EjerciciosScreen(),
+                            builder: (BuildContext context) =>
+                                EjerciciosScreen(),
                             fullscreenDialog: true),
                       );
                     },
@@ -572,11 +584,11 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
               child: Material(
                 color: Colors.transparent,
                 child: Image.asset(
-                      'assets/logos/urgencias.png',
-                      width: 32,
-                      height: 32,
-                      fit: BoxFit.cover,
-                      ),
+                  'assets/logos/urgencias.png',
+                  width: 32,
+                  height: 32,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Expanded(
@@ -606,7 +618,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       onTap: () => Navigator.pushNamed(context, '/author'),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.people, color: ListAppTheme.nearlyBlue),
+                        child:
+                            Icon(Icons.people, color: ListAppTheme.nearlyBlue),
                       ),
                     ),
                   ),
@@ -619,7 +632,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       onTap: () => Navigator.pushNamed(context, '/credits'),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.memory, color: ListAppTheme.nearlyBlue),
+                        child:
+                            Icon(Icons.memory, color: ListAppTheme.nearlyBlue),
                       ),
                     ),
                   ),

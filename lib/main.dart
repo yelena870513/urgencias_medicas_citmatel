@@ -9,6 +9,7 @@ import 'package:urgencias_flutter/urgencias/contenido_view.dart';
 import 'package:urgencias_flutter/urgencias/creditos_view.dart';
 import 'package:urgencias_flutter/urgencias/hotel_home_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:urgencias_flutter/urgencias/search_result_screen.dart';
 import 'package:urgencias_flutter/urgencias/splash_screen.dart';
 import 'package:urgencias_flutter/urgencias/temas_view.dart';
 import 'package:urgencias_flutter/urgencias/favorite_screen.dart';
@@ -57,7 +58,8 @@ class _MyAppState extends State<MyApp> {
         '/home': (BuildContext context) => HotelHomeScreen(widget.model),
         '/credits': (BuildContext context) => CreditosView(),
         '/author': (BuildContext context) => AutorView(),
-        '/favorite': (BuildContext context) => FavoriteScreen()
+        '/favorite': (BuildContext context) => FavoriteScreen(),
+        '/search': (BuildContext context) => SearchResultScreen(),
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');
