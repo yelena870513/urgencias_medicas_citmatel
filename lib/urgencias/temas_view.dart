@@ -159,7 +159,8 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                                   shrinkWrap: true,
                                   itemBuilder:
                                       (BuildContext context, int index) =>
-                                          getTimeBoxUI('', contenidos[index], model),
+                                          getTimeBoxUI(
+                                              '', contenidos[index], model),
                                   itemCount: contenidos.length,
                                 ),
                               ),
@@ -271,9 +272,10 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                     color: ListAppTheme.grey,
                   ),
                 ),
-                onTap:() {
-                  Navigator.pushNamed(context, '/contenido/' + contenido.id.toString());
-                  },
+                onTap: () {
+                  Navigator.pushNamed(
+                      context, '/contenido/' + contenido.id.toString());
+                },
               ),
             ],
           ),

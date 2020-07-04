@@ -23,8 +23,9 @@ class RadioQuestionWidget extends StatelessWidget {
     });
   }
 
-  Widget _buildRadioQuestion(BuildContext context, QuestionOption questionOption, StoreModel model) {
-    double cWidth = MediaQuery.of(context).size.width*0.6;
+  Widget _buildRadioQuestion(
+      BuildContext context, QuestionOption questionOption, StoreModel model) {
+    double cWidth = MediaQuery.of(context).size.width * 0.6;
     return Expanded(
       child: Row(
         children: <Widget>[
@@ -52,14 +53,14 @@ class RadioQuestionWidget extends StatelessWidget {
                     const SizedBox(
                       width: 4,
                     ),
-                   SizedBox(
-                     width: cWidth,
-                     child:  Text(
-                      questionOption.text,
-                      softWrap: true,
-                      style: model.getQuestionStyle(questionOption),
-                    ),
-                   )
+                    SizedBox(
+                      width: cWidth,
+                      child: Text(
+                        questionOption.text,
+                        softWrap: true,
+                        style: model.getQuestionStyle(questionOption),
+                      ),
+                    )
                   ],
                 ),
               ),

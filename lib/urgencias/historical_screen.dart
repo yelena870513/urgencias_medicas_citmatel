@@ -1,17 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:urgencias_flutter/theme/list_theme.dart';
-import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
+import 'package:urgencias_flutter/store/store.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
 
-class FavoriteScreen extends StatefulWidget {
-  FavoriteScreen();
-  @override
-  _FavoriteScreenState createState() => _FavoriteScreenState();
+class HistoricalScreen extends StatefulWidget {
+  _HistoricalScreen createState() => _HistoricalScreen();
 }
 
-class _FavoriteScreenState extends State<FavoriteScreen>
+class _HistoricalScreen extends State<HistoricalScreen>
     with TickerProviderStateMixin {
   final double infoHeight = 364.0;
   AnimationController animationController;
@@ -19,6 +17,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
   double opacity1 = 0.0;
   double opacity2 = 0.0;
   double opacity3 = 0.0;
+
   @override
   void initState() {
     animationController = AnimationController(
@@ -53,10 +52,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
         24.0;
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      List<int> favorites = model.favorites;
-      List<Contenido> contenidos = model.contenidos
-          .where((Contenido c) => favorites.contains(c.id))
-          .toList();
+      List<Contenido> contenidos = model.historical;
       contenidos.sort((e1, e2) => e1.orden - e2.orden);
       return WillPopScope(
           child: Container(
@@ -108,7 +104,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
                                   padding: const EdgeInsets.only(
                                       top: 32.0, left: 18, right: 16),
                                   child: Text(
-                                    'Favoritos',
+                                    'Histórico',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
@@ -141,7 +137,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
                                     child: contenidos.length > 0
                                         ? _itemBuilder(contenidos, model)
                                         : Center(
-                                            child: Text('Sin favoritos',
+                                            child: Text('Historial vacío',
                                                 textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
@@ -279,16 +275,6 @@ class _FavoriteScreenState extends State<FavoriteScreen>
               ),
               SizedBox(
                 width: 8,
-              ),
-              InkWell(
-                child: Icon(
-                  FontAwesomeIcons.trash,
-                  color: ListAppTheme.nearlyBlack,
-                  size: 16,
-                ),
-                onTap: () {
-                  model.removeFavorite(contenido.id);
-                },
               ),
             ],
           ),

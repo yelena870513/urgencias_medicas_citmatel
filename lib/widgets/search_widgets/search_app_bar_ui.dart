@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
 
 class SearchAppBarUIWidget extends StatelessWidget {
+  final StoreModel model;
+  SearchAppBarUIWidget(this.model);
   @override
   Widget build(BuildContext context) {
-    return getAppBarUI(context);
+    return getAppBarUI(context, model);
   }
 
-  Widget getAppBarUI(BuildContext context) {
+  Widget getAppBarUI(BuildContext context, StoreModel model) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, left: 18, right: 18),
       child: Row(
@@ -19,14 +22,15 @@ class SearchAppBarUIWidget extends StatelessWidget {
               children: <Widget>[
                 InkWell(
                   borderRadius:
-                          BorderRadius.circular(AppBar().preferredSize.height),
+                      BorderRadius.circular(AppBar().preferredSize.height),
                   child: Icon(
-                        Icons.arrow_back_ios,
-                        color: ListAppTheme.nearlyBlack,
-                      ),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                    Icons.arrow_back_ios,
+                    color: ListAppTheme.nearlyBlack,
+                  ),
+                  onTap: () {
+                    model.clearSearchResults();
+                    Navigator.pop(context);
+                  },
                 ),
                 Text(
                   'Búsqueda Temática',
@@ -50,5 +54,4 @@ class SearchAppBarUIWidget extends StatelessWidget {
       ),
     );
   }
-  
 }

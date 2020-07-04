@@ -11,16 +11,15 @@ class Equipo {
   String tag;
   int order;
 
-  Equipo({
-    @required this.id,
-    @required this.name,
-    this.cargo,
-    this.tipo,
-    this.body,
-    this.order,
-    this.pic,
-    this.tag
-  });
+  Equipo(
+      {@required this.id,
+      @required this.name,
+      this.cargo,
+      this.tipo,
+      this.body,
+      this.order,
+      this.pic,
+      this.tag});
 
   factory Equipo.fromJson(Map<String, dynamic> equipo) {
     return Equipo(
@@ -31,7 +30,6 @@ class Equipo {
       body: equipo['body'],
       pic: equipo['pic'],
       tag: equipo['tag'],
-      );
+    );
   }
-
 }

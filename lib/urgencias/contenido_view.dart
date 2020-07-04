@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_html/style.dart';
+import 'package:html/parser.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/tema.dart';
@@ -95,6 +97,7 @@ class _ContenidoViewState extends State<ContenidoView>
       Contenido reader = model.contenidos
           .firstWhere((Contenido f) => f.id == widget.contenidoId);
       Tema tema = model.temas.firstWhere((Tema f) => f.id == reader.tema.id);
+      model.addHistorical(reader);
       return WillPopScope(
         child: Container(
           color: ListAppTheme.nearlyWhite,
@@ -165,7 +168,7 @@ class _ContenidoViewState extends State<ContenidoView>
                                     child: SingleChildScrollView(
                                       controller: _scrollController,
                                       child: Html(
-                                        data: reader.texto,
+                                        data: model.liteSearch(reader.texto),
                                         onImageTap: (src) {
                                           print(src);
                                           Navigator.push(context,
@@ -177,6 +180,15 @@ class _ContenidoViewState extends State<ContenidoView>
                                         },
                                         onImageError: (exception, stackTrace) {
                                           print(exception);
+                                        },
+                                        shrinkWrap: true,
+                                        style: {
+                                          "span": Style(
+                                              color: ListAppTheme.nearlyBlue,
+                                              fontSize: FontSize.medium,
+                                              fontStyle: FontStyle.italic,
+                                              textDecoration:
+                                                  TextDecoration.underline),
                                         },
                                       ),
                                     ),
@@ -346,5 +358,9 @@ class _ContenidoViewState extends State<ContenidoView>
         ),
       ),
     );
+  }
+
+  _parseHtmlSearch(Contenido contenido, StoreModel model) {
+    var document = parse(contenido.texto);
   }
 }

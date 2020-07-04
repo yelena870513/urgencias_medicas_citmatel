@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
   final StoreModel model;
-  SplashScreen(this.model); 
+  SplashScreen(this.model);
   @override
   State<StatefulWidget> createState() {
     return SplashScreenState();
@@ -32,13 +32,14 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<String> loadQuestion() async {
-   String text = await rootBundle.loadString('assets/data/preguntas.json');
-   return text;
+    String text = await rootBundle.loadString('assets/data/preguntas.json');
+    return text;
   }
 
   Future<String> dataText() async {
-   String text = await rootBundle.loadString('assets/data/multimedia.content.json');
-   return text;
+    String text =
+        await rootBundle.loadString('assets/data/multimedia.content.json');
+    return text;
   }
 
   @override
@@ -54,7 +55,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Widget buildSplash(StoreModel model) {
-        return Container(
+    return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/screen.png'),

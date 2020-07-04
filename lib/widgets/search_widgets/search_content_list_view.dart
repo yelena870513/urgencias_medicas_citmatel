@@ -40,9 +40,9 @@ class _SearchContentListView extends State<SearchContentListView>
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 children: List<Widget>.generate(
-                  5,
+                  model.indexContenido.length,
                   (int index) {
-                    final int count = 5;
+                    final int count = model.indexContenido.length;
                     final Animation<double> animation =
                         Tween<double>(begin: 0.0, end: 1.0).animate(
                       CurvedAnimation(
@@ -53,7 +53,7 @@ class _SearchContentListView extends State<SearchContentListView>
                     );
                     animationController.forward();
                     return SearchContentResultView(
-                      contenido: model.contenidos[index],
+                      contenido: model.indexContenido[index],
                       animation: animation,
                       animationController: animationController,
                     );

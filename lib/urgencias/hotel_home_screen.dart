@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:intl/intl.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:toast/toast.dart';
 import 'package:urgencias_flutter/models/hotel_list_data.dart';
@@ -15,6 +14,7 @@ import 'hotel_list_view.dart';
 
 class HotelHomeScreen extends StatefulWidget {
   final StoreModel model;
+
   HotelHomeScreen(this.model);
 
   @override
@@ -26,6 +26,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   AnimationController animationController;
   List<HotelListData> hotelList = HotelListData.hotelList;
   final ScrollController _scrollController = ScrollController();
+  final TextEditingController _userSearchController = new TextEditingController();
 
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
@@ -319,7 +320,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Notas',
+                            '',
                             style: TextStyle(
                                 fontWeight: FontWeight.w100,
                                 fontSize: model.fontSize,
@@ -332,19 +333,23 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                             children: <Widget>[
                               InkWell(
                                 child: Icon(
-                                  Icons.note,
+                                  Icons.history,
                                   color: ListAppTheme.nearlyBlue,
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/history');
+                                },
                               ),
-                              SizedBox(
-                                  child: Text('Mis notas',
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: SizedBox(                                 
+                                  child: Text('Historial',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w100,
                                         fontSize: model.fontSize,
                                       ),
                                       softWrap: true),
-                                  width: 90)
+                                  width: 90),)
                             ],
                           )
                         ],
@@ -385,6 +390,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                   padding: const EdgeInsets.only(
                       left: 16, right: 16, top: 4, bottom: 4),
                   child: TextField(
+                    controller: _userSearchController,
                     onChanged: (String txt) {
                       model.setSearchString(txt);
                     },
@@ -426,6 +432,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                     Toast.show("Introduzca al menos 3 caracteres", context,
                         duration: 4, gravity: Toast.CENTER);
                   } else {
+                    _userSearchController.clear();
                     Navigator.pushNamed(context, '/search');
                   }
                 },
@@ -651,6 +658,7 @@ class ContestTabHeader extends SliverPersistentHeaderDelegate {
   ContestTabHeader(
     this.searchUI,
   );
+
   final Widget searchUI;
 
   @override

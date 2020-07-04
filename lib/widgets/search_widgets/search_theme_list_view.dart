@@ -41,10 +41,12 @@ class _SearchThemeListView extends State<SearchThemeListView>
                   return ListView.builder(
                     padding: const EdgeInsets.only(
                         top: 0, bottom: 0, right: 16, left: 16),
-                    itemCount: 5,
+                    itemCount: model.indexTemas.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
-                      final int count = 5 > 10 ? 10 : 5;
+                      final int count = model.indexTemas.length > 10
+                          ? 10
+                          : model.indexTemas.length;
                       final Animation<double> animation =
                           Tween<double>(begin: 0.0, end: 1.0).animate(
                               CurvedAnimation(
@@ -54,7 +56,7 @@ class _SearchThemeListView extends State<SearchThemeListView>
                       animationController.forward();
 
                       return SearchThemeResultView(
-                        tema: model.temas[index],
+                        tema: model.indexTemas[index],
                         animation: animation,
                         animationController: animationController,
                       );

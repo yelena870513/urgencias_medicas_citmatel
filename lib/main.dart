@@ -9,10 +9,11 @@ import 'package:urgencias_flutter/urgencias/contenido_view.dart';
 import 'package:urgencias_flutter/urgencias/creditos_view.dart';
 import 'package:urgencias_flutter/urgencias/hotel_home_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:urgencias_flutter/urgencias/search_result_screen.dart';
+import 'package:urgencias_flutter/urgencias/simple_search_result.dart';
 import 'package:urgencias_flutter/urgencias/splash_screen.dart';
 import 'package:urgencias_flutter/urgencias/temas_view.dart';
 import 'package:urgencias_flutter/urgencias/favorite_screen.dart';
+import 'package:urgencias_flutter/urgencias/historical_screen.dart';
 
 import 'models/tema.dart';
 
@@ -26,6 +27,7 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   final StoreModel model = StoreModel();
+
   @override
   State<StatefulWidget> createState() {
     return _MyAppState();
@@ -33,7 +35,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   MaterialApp _buildMaterialApp() {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -59,7 +60,8 @@ class _MyAppState extends State<MyApp> {
         '/credits': (BuildContext context) => CreditosView(),
         '/author': (BuildContext context) => AutorView(),
         '/favorite': (BuildContext context) => FavoriteScreen(),
-        '/search': (BuildContext context) => SearchResultScreen(),
+        '/search': (BuildContext context) => SimpleSearchResultView(),
+        '/history': (BuildContext context) => HistoricalScreen()
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');
@@ -71,12 +73,13 @@ class _MyAppState extends State<MyApp> {
           Tema tema = widget.model.temas.elementAt(index);
           int contentAmount = widget.model.getTemasCount(tema);
           if (contentAmount == 1) {
-            Contenido contenido = widget.model.contenidos.firstWhere((Contenido f) => f.tema.id == tema.id );
+            Contenido contenido = widget.model.contenidos
+                .firstWhere((Contenido f) => f.tema.id == tema.id);
             if (contenido != null) {
               return MaterialPageRoute<bool>(
-              builder: (BuildContext context) => ContenidoView(contenido.id));
+                  builder: (BuildContext context) =>
+                      ContenidoView(contenido.id));
             }
-            
           }
           return MaterialPageRoute<bool>(
               builder: (BuildContext context) => TemasView(index));
@@ -91,9 +94,9 @@ class _MyAppState extends State<MyApp> {
         return null;
       },
       onUnknownRoute: (RouteSettings settings) {
-          return MaterialPageRoute(
-              builder: (BuildContext context) => HotelHomeScreen(widget.model));
-        },
+        return MaterialPageRoute(
+            builder: (BuildContext context) => HotelHomeScreen(widget.model));
+      },
     );
   }
 

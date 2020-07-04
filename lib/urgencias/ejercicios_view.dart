@@ -8,7 +8,6 @@ import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:urgencias_flutter/widgets/question_widget.dart';
 
-
 class EjerciciosScreen extends StatefulWidget {
   @override
   _EjerciciosScreenState createState() => _EjerciciosScreenState();

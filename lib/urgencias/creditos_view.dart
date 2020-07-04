@@ -52,13 +52,12 @@ class _CreditosViewState extends State<CreditosView>
         24.0;
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      List<Equipo> equipos =
-          model.equipos.where((e) {
-            return e.id != 8 && e.id != 9;
-          }).toList();
+      List<Equipo> equipos = model.equipos.where((e) {
+        return e.id != 8 && e.id != 9;
+      }).toList();
       equipos.sort((e1, e2) => e1.order - e2.order);
       return Container(
-        color: ListAppTheme.nearlyWhite,  
+        color: ListAppTheme.nearlyWhite,
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Stack(

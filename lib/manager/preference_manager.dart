@@ -1,25 +1,24 @@
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preferences {
   static const CONTENT_KEY = "content_id";
-  
+
   static final Preferences instance = Preferences._internal();
   SharedPreferences _sharedPreferences;
   List<int> _contenidos = List<int>();
 
-
   Preferences._internal();
-  factory Preferences() =>  instance;
+  factory Preferences() => instance;
 
   Future<SharedPreferences> get preferences async {
     if (_sharedPreferences != null) {
-      return _sharedPreferences;      
+      return _sharedPreferences;
     } else {
       _sharedPreferences = await SharedPreferences.getInstance();
       String ids = _sharedPreferences.getString(CONTENT_KEY);
-      if (ids != null) {
-        _contenidos = ids.split(',').map((String part) => int.parse(part)).toList();
+      if (ids != null && ids.isNotEmpty) {
+        _contenidos =
+            ids.split(',').map((String part) => int.parse(part)).toList();
       }
       return _sharedPreferences;
     }
@@ -31,15 +30,15 @@ class Preferences {
 
   int addFavorite(int contenidoId) {
     if (!_contenidos.contains(contenidoId)) {
-        _contenidos.add(contenidoId);
-        return contenidoId;      
+      _contenidos.add(contenidoId);
+      return contenidoId;
     }
     return contenidoId;
   }
 
   int removeFavorite(int contenidoId) {
     if (_contenidos.contains(contenidoId)) {
-      _contenidos.remove(contenidoId);      
+      _contenidos.remove(contenidoId);
     }
     return contenidoId;
   }
@@ -54,6 +53,4 @@ class Preferences {
     _sharedPreferences = await preferences;
     return this;
   }
-
-
 }
