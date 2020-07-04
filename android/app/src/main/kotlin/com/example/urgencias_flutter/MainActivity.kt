@@ -1,4 +1,4 @@
-package com.example.urgencias_flutter
+package cu.citmatel.urgencias_flutter
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
