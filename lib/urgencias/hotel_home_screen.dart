@@ -26,7 +26,8 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
   AnimationController animationController;
   List<HotelListData> hotelList = HotelListData.hotelList;
   final ScrollController _scrollController = ScrollController();
-  final TextEditingController _userSearchController = new TextEditingController();
+  final TextEditingController _userSearchController =
+      new TextEditingController();
 
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
@@ -249,37 +250,33 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                     ),
                     onTap: () {
                       FocusScope.of(context).requestFocus(FocusNode());
-                      // setState(() {
-                      //   isDatePopupOpen = true;
-                      // });
-                      // showDemoDialog(context: context);
                       Navigator.pushNamed(context, '/favorite');
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(
                           left: 8, right: 8, top: 4, bottom: 4),
-                      child: Column(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            'Favoritos',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w100,
-                                fontSize: model.fontSize,
-                                color: Colors.grey.withOpacity(0.8)),
+                          InkWell(
+                            child: Icon(
+                              Icons.favorite,
+                              color: ListAppTheme.nearlyBlue,
+                            ),
+                            onTap: () {},
                           ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          SizedBox(
-                              child: Text('Encuentre sus contenidos favoritos',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w100,
-                                    fontSize: model.fontSize,
-                                  ),
-                                  softWrap: true),
-                              width: 150)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: SizedBox(
+                                child: Text('Favoritos',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: model.fontSize,
+                                    ),
+                                    softWrap: true),
+                                width: 115),
+                          )
                         ],
                       ),
                     ),
@@ -310,6 +307,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       Radius.circular(4.0),
                     ),
                     onTap: () {
+                      Navigator.pushNamed(context, '/history');
                       FocusScope.of(context).requestFocus(FocusNode());
                     },
                     child: Padding(
@@ -319,16 +317,6 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(
-                            '',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w100,
-                                fontSize: model.fontSize,
-                                color: Colors.grey.withOpacity(0.8)),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
                           Row(
                             children: <Widget>[
                               InkWell(
@@ -336,20 +324,19 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                   Icons.history,
                                   color: ListAppTheme.nearlyBlue,
                                 ),
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/history');
-                                },
+                                onTap: () {},
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(left: 8),
-                                child: SizedBox(                                 
-                                  child: Text('Historial',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w100,
-                                        fontSize: model.fontSize,
-                                      ),
-                                      softWrap: true),
-                                  width: 90),)
+                                child: SizedBox(
+                                    child: Text('Historial',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w100,
+                                          fontSize: model.fontSize,
+                                        ),
+                                        softWrap: true),
+                                    width: 90),
+                              )
                             ],
                           )
                         ],
@@ -626,7 +613,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child:
-                            Icon(Icons.people, color: ListAppTheme.nearlyBlue),
+                            Icon(Icons.person, color: ListAppTheme.nearlyBlue),
                       ),
                     ),
                   ),
@@ -640,7 +627,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child:
-                            Icon(Icons.memory, color: ListAppTheme.nearlyBlue),
+                            Icon(Icons.people, color: ListAppTheme.nearlyBlue),
                       ),
                     ),
                   ),

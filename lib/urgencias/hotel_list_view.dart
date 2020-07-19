@@ -63,7 +63,7 @@ class HotelListView extends StatelessWidget {
                           Column(
                             children: <Widget>[
                               AspectRatio(
-                                aspectRatio: 2,
+                                aspectRatio: 5 / 3,
                                 child: Image.asset(
                                   prefix + tema.image,
                                   fit: BoxFit.cover,
@@ -106,26 +106,6 @@ class HotelListView extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Positioned(
-                            top: 8,
-                            right: 8,
-                            child: Material(
-                              color: Colors.transparent,
-                              child: InkWell(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(32.0),
-                                ),
-                                onTap: () {},
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.local_hospital,
-                                    color: ListAppTheme.nearlyBlue,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
                         ],
                       ),
                     ),

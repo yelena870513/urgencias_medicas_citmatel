@@ -299,8 +299,16 @@ class StoreModel extends Model {
       }).toList();
 
       _contenidos.forEach((Contenido c) {
-        final String texto =
-            c.texto.replaceAll(new RegExp(r"/<\/?[^>]+(>|$)/g"), ' ');
+        final RegExp exp =
+            RegExp(r"<\/?[^>]+(>|$)", multiLine: true, caseSensitive: false);
+        final String texto = c.texto
+            .replaceAll(exp, '')
+            .replaceAll(RegExp(r'&aacute;'), 'a')
+            .replaceAll(RegExp(r'&eacute;'), 'e')
+            .replaceAll(RegExp(r'&iacute;'), 'i')
+            .replaceAll(RegExp(r'&oacute;'), 'o')
+            .replaceAll(RegExp(r'&uacute;'), 'u')
+            .replaceAll(RegExp(r'&ntilde;'), 'ñ');
         terms.forEach((String f) {
           if (texto.contains(f)) {
             _searchHelper.addSearchIndex(SearchIndex(c.id, c.tema.id));
@@ -330,14 +338,17 @@ class StoreModel extends Model {
       query = query.replaceAll(new RegExp(r'i', caseSensitive: false), '[i|í]');
       query = query.replaceAll(new RegExp(r'o', caseSensitive: false), '[o|ó]');
       query = query.replaceAll(new RegExp(r'u', caseSensitive: false), '[u|ú]');
-      result = html.replaceAllMapped(
-        new RegExp(query, caseSensitive: false), 
-        (Match m){
-          String group = m.group(0);
-          return '<span><b><i><u>' + group + '</u></i></b></span>';
-        }    
-      );
-
+      result = result.replaceAll(RegExp(r'&aacute;'), 'á');
+      result = result.replaceAll(RegExp(r'&eacute;'), 'é');
+      result = result.replaceAll(RegExp(r'&iacute;'), 'í');
+      result = result.replaceAll(RegExp(r'&oacute;'), 'ó');
+      result = result.replaceAll(RegExp(r'&uacute;'), 'ú');
+      result = result.replaceAll(RegExp(r'&ntilde;'), 'ñ');
+      result = result.replaceAllMapped(new RegExp(query, caseSensitive: false),
+          (Match m) {
+        String group = m.group(0);
+        return '<span><b><i><u>' + group + '</u></i></b></span>';
+      });
     }
     return result;
   }

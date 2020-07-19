@@ -27,6 +27,7 @@ class _ContenidoViewState extends State<ContenidoView>
   double opacity1 = 0.0;
   double opacity2 = 0.0;
   double opacity3 = 0.0;
+  Size _mediaQuery;
   @override
   void initState() {
     animationController = AnimationController(
@@ -75,14 +76,16 @@ class _ContenidoViewState extends State<ContenidoView>
 
   void handleScroll() async {
     _scrollController.addListener(() {
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.reverse) {
-        showScrollButton();
-      }
+      if (_mediaQuery.width > 375.0) {
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse) {
+          showScrollButton();
+        }
 
-      if (_scrollController.position.userScrollDirection ==
-          ScrollDirection.forward) {
-        hideScrollButton();
+        if (_scrollController.position.userScrollDirection ==
+            ScrollDirection.forward) {
+          hideScrollButton();
+        }
       }
     });
   }
@@ -92,6 +95,9 @@ class _ContenidoViewState extends State<ContenidoView>
     final double tempHeight = MediaQuery.of(context).size.height -
         (MediaQuery.of(context).size.width / 1.2) +
         24.0;
+    setState(() {
+      _mediaQuery = MediaQuery.of(context).size;
+    });
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
       Contenido reader = model.contenidos

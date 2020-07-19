@@ -31,9 +31,9 @@ class QuestionWidget extends StatelessWidget {
             question.header,
             textAlign: TextAlign.left,
             style: TextStyle(
-                color: Colors.grey,
+                color: Colors.black,
                 fontSize: MediaQuery.of(context).size.width > 360 ? 18 : 16,
-                fontWeight: FontWeight.normal),
+                fontWeight: FontWeight.w400),
           ),
         ),
         Padding(

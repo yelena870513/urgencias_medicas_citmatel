@@ -58,6 +58,9 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
       Tema tema = model.temas.elementAt(widget.temaIndex);
       List<Contenido> contenidos =
           model.contenidos.where((c) => c.tema.id == tema.id).toList();
+      contenidos.sort((Contenido a, Contenido b) {
+        return a.orden - b.orden;
+      });
       return Container(
         color: ListAppTheme.nearlyWhite,
         child: Scaffold(
