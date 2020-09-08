@@ -1,16 +1,7 @@
-# urgencias_flutter
+# Urgencias Médicas
 
-A new Flutter project.
+Una urgencia médica es una condición clínica que requiere de una actuación rápida, precisa, solidez del conocimiento teórico y la presencia de habilidades prácticas por parte del personal de atención. Es por ello que la asistencia médica en los servicios de urgencia constituye dentro del sistema de salud de cada país, una de las actividades de mayor complejidad. Es el resultado de la interacción de múltiples factores implicados en disponer de cobertura asistencial con elevada tecnología, que satisfaga la demanda por la morbilidad poblacional de una manera constante y continua.  
 
-## Getting Started
+La atención al paciente grave requiere de competencia profesional. Sin embargo, es crucial que dicho personal disponga de un elevado nivel de recursos que complementen la actuación. Así será posible alcanzar la calidad de la atención que se ofrece, en situaciones en que el tiempo impone al médico la mayor celeridad y certeza.  
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+En múltiples ocasiones, producto del grosor del contenido que se debe memorizar en relación con los criterios de diagnóstico y conducta a seguir con las entidades a las cuales nos enfrentamos en nuestras guardias médicas, nos hemos encontrado ante la necesidad de una guía de referencia rápida, principalmente en el personal de poca experiencia. Por todo ello se hace necesario contar con un soporte digital que nos permita cumplir con mayor prontitud nuestra tarea.  
