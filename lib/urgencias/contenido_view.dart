@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_html/style.dart';
-import 'package:html/parser.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/tema.dart';
@@ -90,6 +89,16 @@ class _ContenidoViewState extends State<ContenidoView>
     });
   }
 
+  void _openImageScreen(BuildContext context, String image) {
+    Navigator.of(context)
+        .push(PageRouteBuilder(pageBuilder: (context, animation1, animation2) {
+      return FadeTransition(
+        opacity: animation1,
+        child: ImageScreen(image),
+      );
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
@@ -176,13 +185,10 @@ class _ContenidoViewState extends State<ContenidoView>
                                       child: Html(
                                         data: model.liteSearch(reader.texto),
                                         onImageTap: (src) {
-                                          print(src);
-                                          Navigator.push(context,
-                                              MaterialPageRoute(builder: (_) {
-                                            final List<String> pathElements =
-                                                src.split(':');
-                                            return ImageScreen(pathElements[1]);
-                                          }));
+                                          final List<String> pathElements =
+                                              src.split(':');
+                                          _openImageScreen(
+                                              context, pathElements[1]);
                                         },
                                         onImageError: (exception, stackTrace) {
                                           print(exception);
@@ -297,7 +303,7 @@ class _ContenidoViewState extends State<ContenidoView>
               ],
             ),
             floatingActionButton: Visibility(
-              visible: _showFab,
+              visible: false,
               child: FloatingActionButton(
                   child: Icon(Icons.arrow_upward),
                   backgroundColor: Colors.lightBlue.withOpacity(0.5),
@@ -309,7 +315,6 @@ class _ContenidoViewState extends State<ContenidoView>
           ),
         ),
         onWillPop: () {
-          print('passing');
           model.commit();
           Navigator.pop(context, false);
           return Future.value(false);
@@ -364,9 +369,5 @@ class _ContenidoViewState extends State<ContenidoView>
         ),
       ),
     );
-  }
-
-  _parseHtmlSearch(Contenido contenido, StoreModel model) {
-    var document = parse(contenido.texto);
   }
 }

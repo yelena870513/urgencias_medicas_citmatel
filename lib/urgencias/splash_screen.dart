@@ -26,8 +26,10 @@ class SplashScreenState extends State<SplashScreen> {
     String questions = await loadQuestion();
     widget.model.loadQuestions(questions);
     String content = await dataText();
+    String gallery = await dataGallery();
     widget.model.setPreferences();
     widget.model.populateLists(content);
+    widget.model.populateGallery(gallery);
     return new Timer(Duration(microseconds: 300), onDoneLoading);
   }
 
@@ -40,6 +42,11 @@ class SplashScreenState extends State<SplashScreen> {
     String text =
         await rootBundle.loadString('assets/data/multimedia.content.json');
     return text;
+  }
+
+  Future<String> dataGallery() async {
+    String gallery = await rootBundle.loadString('assets/data/gallery.json');
+    return gallery;
   }
 
   @override

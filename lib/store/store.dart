@@ -5,6 +5,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/manager/preference_manager.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
+import 'package:urgencias_flutter/models/galleryItem.dart';
 import 'package:urgencias_flutter/models/question_option.dart';
 import 'package:urgencias_flutter/models/search_helper.dart';
 import 'package:urgencias_flutter/models/search_index.dart';
@@ -21,6 +22,7 @@ class StoreModel extends Model {
   Preferences _appPrefereces = Preferences();
   SearchHelper _searchHelper = SearchHelper();
   Queue<Contenido> _historical = Queue();
+  List<GalleryItem> _gallery = List();
 
   bool showContenidoScroll = false;
   bool showAnswer = false;
@@ -31,6 +33,7 @@ class StoreModel extends Model {
   double maxThemeFontSize = 25;
   double minThemeFontSize = 19;
 
+  // Computed
   List<Contenido> get contenidos {
     return List.from(_contenidos);
   }
@@ -113,6 +116,12 @@ class StoreModel extends Model {
   int get searchIndexCount {
     return _searchHelper.searchIndex.length;
   }
+
+  List<GalleryItem> get gallery {
+    return _gallery.toList();
+  }
+
+  // Actions
 
   void addContenido(Contenido contenido) {
     _contenidos.add(contenido);
@@ -351,5 +360,12 @@ class StoreModel extends Model {
       });
     }
     return result;
+  }
+
+  void populateGallery(String text) {
+    final Map<String, dynamic> parsedMap = json.decode(text);
+    final List<dynamic> galleryList = parsedMap['gallery'];
+    _gallery = galleryList.map((f) => GalleryItem.fromJson(f)).toList();
+    notifyListeners();
   }
 }

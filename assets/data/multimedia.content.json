@@ -1662,7 +1662,7 @@
       "titulo": "Sistema de código por colores",
       "subTitulo": "Sistema de código por colores",
       "orden": 2,
-      "img": "logo-ultra.png",
+      "img": "logo-color.png",
       "proyecto": null
     },
     {
@@ -1678,7 +1678,7 @@
       "titulo": "Bibliografía",
       "subTitulo": "Bibliografía",
       "orden": 21,
-      "img": "logo-ultra.png",
+      "img": "logo-bib.png",
       "proyecto": null
     },
     {
@@ -1702,7 +1702,7 @@
       "titulo": "Reanimación cardiopulmonar",
       "subTitulo": "Reanimación cardiopulmonar",
       "orden": 4,
-      "img": "logo-other.png",
+      "img": "logo-reanim.png",
       "proyecto": null
     },
     {
@@ -1718,7 +1718,7 @@
       "titulo": "Evaluación de la urgencia",
       "subTitulo": "Evaluación de la urgencia",
       "orden": 3,
-      "img": "logo-other.png",
+      "img": "logo-eval.png",
       "proyecto": null
     },
     {
@@ -1726,7 +1726,7 @@
       "titulo": "Glosario",
       "subTitulo": "Glosario",
       "orden": 20,
-      "img": "logo-other.png",
+      "img": "logo-dict.png",
       "proyecto": null
     }
   ],

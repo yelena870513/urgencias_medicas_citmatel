@@ -1,0 +1,210 @@
+{
+    "gallery": [
+        {
+            "id": 1,
+            "file": "Tabla5.png",
+            "caption": "Tabla 5. Clasificación de la Cetoacidosis Diabética."
+        },
+        {
+            "id": 2,
+            "file": "tabla1.png",
+            "caption": "Tabla 1. Estadios de Bocles."
+        },
+        {
+            "id": 3,
+            "file": "Fig3.png",
+            "caption": "Fig. 3 Escala de Anthonisen."
+        },
+        {
+            "id": 4,
+            "file": "Tabla10.png",
+            "caption": "Tabla 10. Clasificación del hemotórax según cuantía."
+        },
+        {
+            "id": 5,
+            "file": "13e16ceec211484abf4168a462617686.png",
+            "caption": "Cuadro 2. Topografía del IMA."
+        }, 
+        {
+            "id": 6,
+            "file": "Fig1.png",
+            "caption": "Fig. 1 Infarto de cara inferior. Q patológica en derivaciones D2, D3 y aVf."
+        },
+        {
+            "id": 7,
+            "file": "C3.png",
+            "caption": "Cuadro 3. Contraindicaciones de la Fibrinólisis."
+        },
+        {
+            "id": 8,
+            "file": "Tabla6.png",
+            "caption": "Tabla 6. Estadificación de lesión renal aguda."
+        }, 
+        {
+            "id": 9,
+            "file": "Fig2.png",
+            "caption": "Fig. 2 Algoritmo de tratamiento de la Fibrilación Auricular."
+        },
+        {
+            "id": 10,
+            "file": "Tabla_2_1.png",
+            "caption": "Tabla 2. Escala Full Outline Unresponsiveness (FOUR)."
+        },
+        {
+            "id": 11,
+            "file": "Tabla3_1.png",
+            "caption": "Tabla 3. Estado Pupilar en Coma."
+        },
+        {
+            "id": 12,
+            "file": "1.png",
+            "caption": "Cuadro 1. Causas reversibles de la PCR."
+        },
+        {
+            "id": 13,
+            "file": "Tabla7.png",
+            "caption": "Tabla 7. Escala seg&uacute;n grado de profundidad de la quemadura."
+        }, 
+        {
+            "id": 14,
+            "file": "Fig4.png",
+            "caption": "Fig. 4 Regla de Wallace."
+        },
+        {
+            "id": 15,
+            "file": "tabla4.png",
+            "caption": "Tabla 4. Indice de Marshall."
+        },
+        {
+            "id": 16,
+            "file": "Tabla8.png",
+            "caption": "Tabla 8. Escala de Glasgow adulto."
+        },
+        {
+            "id": 17,
+            "file": "Tabla9.png",
+            "caption": "Tabla 9. Escala de Glasgow pediátrica."
+        },
+        {
+            "id": 18,
+            "file": "Fig5.png",
+            "caption": "Fig. 5 Clasificación Marshall para TCE por Tomografía Axial Computarizada."
+        },
+        {
+            "id": 19,
+            "file": "Tabla13.png",
+            "caption": "Tabla 13. Criterios para determinar esquema de hidratación."
+        },
+        {
+            "id": 20,
+            "file": "Tabla12.png",
+            "caption": "Tabla 12. Tabla de Tensión Arterial según Percentiles."
+        },
+        {
+            "id": 21,
+            "file": "Tabla11.png",
+            "caption": "Tabla 11. Clasificación del Shock Hipovolémico."
+        },
+        {
+            "id": 22,
+            "file": "d55ab822ef3d40b2b2e32d355f84e99b.png",
+            "caption": "Tabla 14. Principales aspectos a evaluar y posibles diagnósticos en la exploración de los distintos sistemas y en la realización de procederes médicos."
+        },
+        {
+            "id": 23,
+            "file": "6d4384b0387b33400f065c7e638af86d.jpeg",
+            "caption": "Fig. 6 Sitios de visualización en el e-FAST 1: Vista subxifoidea, 2: Vista del cuadrante superior derecho, 3: Vista del cuadrante superior izquierdo, 4: Vista pélvica, 5: Vista de la pared anterior del tórax."
+        },
+        {
+            "id": 24,
+            "file": "01e5cc183f52f983aad847ab418f5f2b.jpeg",
+            "caption": "Fig. 7 Vista subxifoidea de imagen cardíaca. AD: aurícula derecha, VD: ventrículo derecho, AI: aurícula izquierda, VI: ventrículo izquierdo."
+        },
+        {
+            "id": 25,
+            "file": "48ead276e21108711c2de23852d74051.jpeg",
+            "caption": "Fig. 8 Vista de cuadrante superior derecho donde se visualiza P: pulmón, H: hígado, D: diafragma, RD: riñón derecho."
+        },
+        {
+            "id": 26,
+            "file": "e3cfe99b100958536ed4df2b9a69ebfc.png",
+            "caption": "Fig. 9 Vista de cuadrante superior izquierdo donde se visualiza B: bazo, RI: riñón izquierdo."
+        },
+        {
+            "id": 27,
+            "file": "e3cfe99b100958536ed4df2b9a69ebfc.png",
+            "caption": "Fig. 9 Vista de cuadrante superior izquierdo donde se visualiza B: bazo, RI: riñón izquierdo."
+        },
+        {
+            "id": 28,
+            "file": "63040dc4be86b37ccbb6a2ddae09dcbe.jpeg",
+            "caption": "Fig. 10 Vista pélvica donde se visualiza V: vejiga."
+        },
+        {
+            "id": 29,
+            "file": "Fig11.png",
+            "caption": "Fig. 11 Vista pulmonar anterior donde se visualiza patrón normal."
+        },
+        {
+            "id": 30,
+            "file": "5a75992a3548ccf0088351bc164234f8.png",
+            "caption": "Fig. 12 BLUE points superior e inferior según dirección cefalocaudal."
+        },
+        {
+            "id": 31,
+            "file": "801f2ce646c2eb237e3a00b76b332a88.jpeg",
+            "caption": "Fig. 13 Ecografía pulmonar donde se visualiza P: pulmón, C: costilla, PP: pleura."
+        },
+        {
+            "id": 32,
+            "file": "9032f1cf90079bd13568c2942dcf0e27.png",
+            "caption": "Fig. 14 Ecografía pulmonar para visualizar deslizamiento pleural (Lung sliding)."
+        },
+        {
+            "id": 33,
+            "file": "fc9f4442d026a0a95ec0b03c38eb88d0.png",
+            "caption": "Fig. 15 Ecografía pulmonar donde se visualiza patrón de líneas A."
+        },
+        {
+            "id": 34,
+            "file": "9b6c3422ec4f525f60bd34976fea898a.png",
+            "caption": "Fig. 16 Ecografía pulmonar donde se visualiza patrón de líneas B."
+        },
+        {
+            "id": 35,
+            "file": "dc500cc90064c669b6a47ab7bdf12170.jpeg",
+            "caption": "Fig. 17 Ecografía pulmonar donde se visualiza patrón de condensación."
+        },
+        {
+            "id": 36,
+            "file": "3629d227f837720e20d39fbeeca24994.png",
+            "caption": "Fig. 18 Algoritmo BLUE."
+        },
+        {
+            "id": 37,
+            "file": "7e07b0f4005477f42d1ac0dc5a9ea980.png",
+            "caption": "Fig. 19 Vista subxifoidea para medici&oacute;n del di&aacute;metro de vena cava inferior."
+        },
+        {
+            "id": 38,
+            "file": "24c03eb7dd04d234f57e3111124a307a.jpeg",
+            "caption": "Fig. 20 Ecografía pulmonar en modo M: A: signo de la playa y B: signo código de barra, sugestivo de neumotórax."
+        },
+        {
+            "id": 39,
+            "file": "4430e42b73d1c3f0c5c461d658bc33dc.jpeg",
+            "caption": "Fig. 21 Imagen transorbitaria para medición del di&aacute;metro de la vaina del nervio óptico, go: globo ocular y no: nervio óptico."
+        },
+        {
+            "id": 40,
+            "file": "4d150cfc135c3bd7402214910fb46a22.jpeg",
+            "caption": "Fig. 22 Imagen cervical donde se visualiza VYI: vena yugular interna y ACI: arteria carótida interna."
+        },
+        {
+            "id": 41,
+            "file": "9f919ff3cf34fb9d37e6c7c77604b011.png",
+            "caption": "Fig. 23 Imágenes en corte transversal (A y B) y longitudinal (C y D) de a: arteria subclavia y v: vena subclavia."
+        }
+        
+    ]
+}

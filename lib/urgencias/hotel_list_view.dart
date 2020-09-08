@@ -63,7 +63,7 @@ class HotelListView extends StatelessWidget {
                           Column(
                             children: <Widget>[
                               AspectRatio(
-                                aspectRatio: 5 / 3,
+                                aspectRatio: 1.2,
                                 child: Image.asset(
                                   prefix + tema.image,
                                   fit: BoxFit.cover,
