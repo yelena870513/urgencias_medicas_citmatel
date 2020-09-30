@@ -31,7 +31,8 @@ class Preferences {
   int addFavorite(int contenidoId) {
     if (!_contenidos.contains(contenidoId)) {
       _contenidos.add(contenidoId);
-      return contenidoId;
+    } else {
+      _contenidos.remove(contenidoId);
     }
     return contenidoId;
   }

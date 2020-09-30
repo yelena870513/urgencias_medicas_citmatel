@@ -66,7 +66,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 1.2,
-                    child: Image.asset('assets/images/screen.png'),
+                    child: Image.asset('assets/images/fondo_autores.jpg'),
                   ),
                 ],
               ),

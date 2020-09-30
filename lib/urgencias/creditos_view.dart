@@ -66,7 +66,7 @@ class _CreditosViewState extends State<CreditosView>
                 children: <Widget>[
                   AspectRatio(
                     aspectRatio: 1.2,
-                    child: Image.asset('assets/images/screen.png'),
+                    child: Image.asset('assets/images/fondo_creditos.jpg'),
                   ),
                 ],
               ),

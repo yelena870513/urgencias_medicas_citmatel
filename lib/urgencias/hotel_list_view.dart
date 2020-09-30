@@ -64,9 +64,12 @@ class HotelListView extends StatelessWidget {
                             children: <Widget>[
                               AspectRatio(
                                 aspectRatio: 1.2,
-                                child: Image.asset(
-                                  prefix + tema.image,
-                                  fit: BoxFit.cover,
+                                child: Container(
+                                  color: Colors.white,
+                                  child: Image.asset(
+                                    prefix + tema.image,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                               Container(
@@ -92,7 +95,7 @@ class HotelListView extends StatelessWidget {
                                                 textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
-                                                  fontSize: model.themeFontSize,
+                                                  fontSize: 16,
                                                 ),
                                               ),
                                               buildCounterBox(contenidoCount)

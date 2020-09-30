@@ -3,11 +3,11 @@ buildscript {
     repositories {
 
          maven {
-            url "http://localhost:8081/repository/maven-google/"
+            url "http://localhost:8082/repository/maven-google/"
         }
         
         maven {
-            url "http://localhost:8081/repository/maven-jcenter/"
+            url "http://localhost:8082/repository/maven-jcenter/"
         }       
         
     }
@@ -21,11 +21,11 @@ buildscript {
 allprojects {
     repositories {
          maven {
-            url "http://localhost:8081/repository/maven-google/"
+            url "http://localhost:8082/repository/maven-google/"
         }
         
         maven {
-            url "http://localhost:8081/repository/maven-jcenter/"
+            url "http://localhost:8082/repository/maven-jcenter/"
         }    
         
     }

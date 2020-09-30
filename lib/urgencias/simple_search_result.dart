@@ -251,7 +251,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                     top: MediaQuery.of(context).padding.top * 0.8,
                     left: 16,
                     right: 16),
-                child: Image.asset('assets/images/helpImage.png'),
+                child: Image.asset('assets/images/fondo_busqueda.jpg'),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 8),

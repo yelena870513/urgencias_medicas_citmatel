@@ -578,7 +578,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
               child: Material(
                 color: Colors.transparent,
                 child: Image.asset(
-                  'assets/logos/urgencias.png',
+                  'assets/logos/home.png',
                   width: 32,
                   height: 32,
                   fit: BoxFit.cover,
@@ -591,7 +591,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                   'Urgencias Médicas',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 22,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -612,8 +612,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       onTap: () => Navigator.pushNamed(context, '/author'),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:
-                            Icon(Icons.person, color: ListAppTheme.nearlyBlue),
+                        child: Image.asset(
+                          'assets/logos/autor.png',
+                          width: 24,
+                          height: 24,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
@@ -626,8 +630,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       onTap: () => Navigator.pushNamed(context, '/credits'),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:
-                            Icon(Icons.people, color: ListAppTheme.nearlyBlue),
+                        child: Image.asset(
+                          'assets/logos/credits.png',
+                          width: 24,
+                          height: 24,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

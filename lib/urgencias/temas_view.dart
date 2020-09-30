@@ -195,7 +195,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                       height: 60,
                       child: Center(
                           child: Image.asset(
-                        widget._logos + tema.image,
+                        widget._logos + 'home.png',
                         width: 32,
                         height: 32,
                         fit: BoxFit.cover,

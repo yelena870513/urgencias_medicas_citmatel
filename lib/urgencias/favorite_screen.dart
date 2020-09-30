@@ -69,7 +69,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
                     children: <Widget>[
                       AspectRatio(
                         aspectRatio: 1.2,
-                        child: Image.asset('assets/images/screen.png'),
+                        child: Image.asset('assets/images/fondo_favorito.jpg'),
                       ),
                     ],
                   ),
@@ -181,7 +181,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
                           height: 60,
                           child: Center(
                               child: Image.asset(
-                            'assets/logos/urgencias.png',
+                            'assets/logos/home.png',
                             width: 32,
                             height: 32,
                             fit: BoxFit.cover,

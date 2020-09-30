@@ -21,7 +21,6 @@ class _ContenidoViewState extends State<ContenidoView>
   final double infoHeight = 364.0;
   AnimationController animationController;
   ScrollController _scrollController = new ScrollController();
-  bool _showFab = false;
   Animation<double> animation;
   double opacity1 = 0.0;
   double opacity2 = 0.0;
@@ -61,17 +60,9 @@ class _ContenidoViewState extends State<ContenidoView>
     });
   }
 
-  void showScrollButton() {
-    setState(() {
-      _showFab = true;
-    });
-  }
+  void showScrollButton() {}
 
-  void hideScrollButton() {
-    setState(() {
-      _showFab = false;
-    });
-  }
+  void hideScrollButton() {}
 
   void handleScroll() async {
     _scrollController.addListener(() {
@@ -235,7 +226,7 @@ class _ContenidoViewState extends State<ContenidoView>
                         height: 60,
                         child: Center(
                           child: Image.asset(
-                            'assets/logos/' + tema.image,
+                            'assets/logos/home.png',
                             width: 32,
                             height: 32,
                           ),
