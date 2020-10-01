@@ -6,6 +6,7 @@ class Question {
   String type;
   String header;
   List<QuestionOption> questionOption;
+  bool isLocked = false;
 
   Question({
     @required this.id,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/question.dart';
 import 'package:urgencias_flutter/models/question_option.dart';
+import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:urgencias_flutter/widgets/radio_question_widget.dart';
 import 'package:urgencias_flutter/store/store.dart';
 
@@ -15,11 +16,12 @@ class QuestionWidget extends StatelessWidget {
         builder: (BuildContext context, Widget child, StoreModel model) {
       Question question =
           model.questions.firstWhere((Question q) => q.id == questionId);
-      return _buildQuestion(context, question);
+      return _buildQuestion(context, question, model);
     });
   }
 
-  Widget _buildQuestion(BuildContext context, Question question) {
+  Widget _buildQuestion(
+      BuildContext context, Question question, StoreModel model) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,7 +33,9 @@ class QuestionWidget extends StatelessWidget {
             question.header,
             textAlign: TextAlign.left,
             style: TextStyle(
-                color: Colors.black,
+                color: model.isQuestionLocked(questionId)
+                    ? ListAppTheme.nearlyBlue
+                    : Colors.black,
                 fontSize: MediaQuery.of(context).size.width > 360 ? 18 : 16,
                 fontWeight: FontWeight.w400),
           ),

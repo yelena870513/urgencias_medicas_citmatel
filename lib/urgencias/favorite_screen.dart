@@ -283,7 +283,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
               InkWell(
                 child: Icon(
                   FontAwesomeIcons.trash,
-                  color: ListAppTheme.nearlyBlack,
+                  color: ListAppTheme.nearlyBlue,
                   size: 16,
                 ),
                 onTap: () {

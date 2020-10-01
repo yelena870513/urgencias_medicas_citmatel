@@ -34,9 +34,11 @@ class RadioQuestionWidget extends StatelessWidget {
             child: InkWell(
               borderRadius: const BorderRadius.all(Radius.circular(4.0)),
               onTap: () {
-                bool value = !questionOption.isSelected;
-                model.setSelectedQuestionOption(questionOption, value);
-                questionOption.isSelected = value;
+                if (!model.isQuestionLocked(questionId)) {
+                  bool value = !questionOption.isSelected;
+                  model.setSelectedQuestionOption(questionOption, value);
+                  questionOption.isSelected = value;
+                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

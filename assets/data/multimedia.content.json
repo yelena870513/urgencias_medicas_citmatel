@@ -1822,6 +1822,16 @@
       "tipo": "autor",
       "order":9,
       "id": 9
+    },
+    {
+      "cargo": "Copyright CITMATEL 2020",
+      "name": "Todos los derechos reservados",
+      "order": 10,
+      "tipo": "equipo",
+      "body": "",
+      "pic": "",
+      "tag": "",
+      "id": 10
     }
   ]
 }

@@ -180,6 +180,7 @@ class StoreModel extends Model {
         for (int j = 0; j < questionSet.length; j++) {
           if (questionSet[j].id.compareTo(questionOption.id) == 0) {
             _questions[i].questionOption[j].isSelected = value;
+            _questions[i].isLocked = value;
             notifyListeners();
             break;
           }
@@ -367,5 +368,11 @@ class StoreModel extends Model {
     final List<dynamic> galleryList = parsedMap['gallery'];
     _gallery = galleryList.map((f) => GalleryItem.fromJson(f)).toList();
     notifyListeners();
+  }
+
+  bool isQuestionLocked(int questionId) {
+    Question question =
+        questions.firstWhere((Question q) => q.id == questionId);
+    return question.isLocked;
   }
 }
