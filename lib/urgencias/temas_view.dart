@@ -4,6 +4,7 @@ import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/tema.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:urgencias_flutter/store/store.dart';
+import 'package:urgencias_flutter/widgets/home_button_link.dart';
 
 class TemasView extends StatefulWidget {
   final int temaIndex;
@@ -190,17 +191,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      child: Center(
-                          child: Image.asset(
-                        widget._logos + 'home.png',
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.cover,
-                      )),
-                    ),
+                    child: HomeButtonLink(),
                   ),
                 ),
               ),

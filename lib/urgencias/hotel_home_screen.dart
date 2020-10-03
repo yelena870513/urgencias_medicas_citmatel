@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:toast/toast.dart';
 import 'package:urgencias_flutter/models/hotel_list_data.dart';
+import 'package:urgencias_flutter/models/tap_buttons_name.dart';
 import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/hotel_app_theme.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
@@ -31,6 +32,10 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
 
   DateTime startDate = DateTime.now();
   DateTime endDate = DateTime.now().add(const Duration(days: 5));
+  bool _isAuthorButtonTapped = false;
+  bool _isCreditButtonTapped = false;
+  bool _isSearchButtonTapped = false;
+  bool _isQuizButtonTapped = false;
 
   @override
   void initState() {
@@ -56,6 +61,54 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
         builder: (BuildContext context, Widget child, StoreModel model) {
       return getTheme(context, model);
     });
+  }
+
+  void _zoomInTapButton(String buttonName) {
+    setState(() {
+      switch (buttonName) {
+        case TapButtonsName.authorButtonName:
+          _isAuthorButtonTapped = true;
+          break;
+        case TapButtonsName.creditButtonName:
+          _isCreditButtonTapped = true;
+          break;
+        case TapButtonsName.quizButtonName:
+          _isQuizButtonTapped = true;
+          break;
+        case TapButtonsName.searchButtonName:
+          _isSearchButtonTapped = true;
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  void _zoomOutTapButton(String buttonName) {
+    setState(() {
+      switch (buttonName) {
+        case TapButtonsName.authorButtonName:
+          _isAuthorButtonTapped = false;
+          break;
+        case TapButtonsName.creditButtonName:
+          _isCreditButtonTapped = false;
+          break;
+        case TapButtonsName.quizButtonName:
+          _isQuizButtonTapped = false;
+          break;
+        case TapButtonsName.searchButtonName:
+          _isSearchButtonTapped = false;
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  Future<void> _zoomControl(String buttonName) async {
+    _zoomInTapButton(buttonName);
+    await Future<dynamic>.delayed(const Duration(milliseconds: 500));
+    _zoomOutTapButton(buttonName);
   }
 
   Theme getTheme(BuildContext context, StoreModel model) {
@@ -605,36 +658,54 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 children: <Widget>[
                   Material(
                     color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () => Navigator.pushNamed(context, '/author'),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/logos/autor.png',
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.cover,
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      width: _isAuthorButtonTapped ? 48 : 32,
+                      height: _isAuthorButtonTapped ? 48 : 32,
+                      curve: Curves.ease,
+                      child: InkWell(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(32.0),
+                        ),
+                        onTap: () async {
+                          await _zoomControl(TapButtonsName.authorButtonName);
+                          Navigator.pushNamed(context, '/author');
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            'assets/logos/autor.png',
+                            width: _isAuthorButtonTapped ? 24 : 18,
+                            height: _isAuthorButtonTapped ? 24 : 18,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   Material(
                     color: Colors.transparent,
-                    child: InkWell(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(32.0),
-                      ),
-                      onTap: () => Navigator.pushNamed(context, '/credits'),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/logos/credits.png',
-                          width: 24,
-                          height: 24,
-                          fit: BoxFit.cover,
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 1),
+                      width: _isCreditButtonTapped ? 48 : 32,
+                      height: _isCreditButtonTapped ? 48 : 32,
+                      curve: Curves.ease,
+                      child: InkWell(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(32.0),
+                        ),
+                        onTap: () async {
+                          await _zoomControl(TapButtonsName.creditButtonName);
+                          Navigator.pushNamed(context, '/credits');
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            'assets/logos/credits.png',
+                            width: _isCreditButtonTapped ? 32 : 24,
+                            height: _isCreditButtonTapped ? 32 : 24,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

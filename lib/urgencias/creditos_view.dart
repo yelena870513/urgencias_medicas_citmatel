@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:urgencias_flutter/store/store.dart';
+import 'package:urgencias_flutter/widgets/home_button_link.dart';
 
 class CreditosView extends StatefulWidget {
   CreditosView();
@@ -166,17 +167,7 @@ class _CreditosViewState extends State<CreditosView>
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      child: Center(
-                          child: Image.asset(
-                        'assets/logos/home.png',
-                        width: 32,
-                        height: 32,
-                        fit: BoxFit.cover,
-                      )),
-                    ),
+                    child: HomeButtonLink(),
                   ),
                 ),
               ),

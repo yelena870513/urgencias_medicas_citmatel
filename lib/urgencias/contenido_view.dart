@@ -8,6 +8,7 @@ import 'package:urgencias_flutter/store/store.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:urgencias_flutter/urgencias/image_screen.dart';
+import 'package:urgencias_flutter/widgets/home_named_button_link.dart';
 
 class ContenidoView extends StatefulWidget {
   final int contenidoId;
@@ -101,18 +102,6 @@ class _ContenidoViewState extends State<ContenidoView>
   void _zoomOutFavorite() {
     setState(() {
       isFavoriteTapped = false;
-    });
-  }
-
-  void _zoomInHome() {
-    setState(() {
-      isHomeTapped = true;
-    });
-  }
-
-  void _zoomOutHome() {
-    setState(() {
-      isHomeTapped = false;
     });
   }
 
@@ -247,29 +236,7 @@ class _ContenidoViewState extends State<ContenidoView>
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0)),
                       elevation: 10.0,
-                      child: AnimatedContainer(
-                        duration: Duration(microseconds: 300),
-                        curve: Curves.easeOutBack,
-                        width: isHomeTapped ? 90 : 60,
-                        height: isHomeTapped ? 90 : 60,
-                        child: Center(
-                          child: InkWell(
-                            child: Image.asset(
-                              'assets/logos/home.png',
-                              width: 32,
-                              height: 32,
-                            ),
-                            onTap: () async {
-                              _zoomInHome();
-                              await Future<dynamic>.delayed(
-                                  const Duration(milliseconds: 200));
-                              _zoomOutHome();
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/home');
-                            },
-                          ),
-                        ),
-                      ),
+                      child: HomeNamedButtonLink(),
                     ),
                   ),
                 ),
