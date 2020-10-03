@@ -48,7 +48,7 @@ class SearchAppBarUIWidget extends StatelessWidget {
           Container(
             width: 60,
             height: 60,
-            child: Image.asset('assets/logos/urgencias.png'),
+            child: Image.asset('assets/logos/home.png'),
           )
         ],
       ),

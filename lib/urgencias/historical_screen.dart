@@ -177,7 +177,7 @@ class _HistoricalScreen extends State<HistoricalScreen>
                           height: 60,
                           child: Center(
                               child: Image.asset(
-                            'assets/logos/urgencias.png',
+                            'assets/logos/home.png',
                             width: 32,
                             height: 32,
                             fit: BoxFit.cover,

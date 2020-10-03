@@ -591,7 +591,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                   'Urgencias Médicas',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 ),
               ),

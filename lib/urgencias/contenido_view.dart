@@ -26,6 +26,8 @@ class _ContenidoViewState extends State<ContenidoView>
   double opacity2 = 0.0;
   double opacity3 = 0.0;
   Size _mediaQuery;
+  bool isFavoriteTapped = false;
+  bool isHomeTapped = false;
   @override
   void initState() {
     animationController = AnimationController(
@@ -88,6 +90,30 @@ class _ContenidoViewState extends State<ContenidoView>
         child: ImageScreen(image),
       );
     }));
+  }
+
+  void _zoomInFavorite() {
+    setState(() {
+      isFavoriteTapped = true;
+    });
+  }
+
+  void _zoomOutFavorite() {
+    setState(() {
+      isFavoriteTapped = false;
+    });
+  }
+
+  void _zoomInHome() {
+    setState(() {
+      isHomeTapped = true;
+    });
+  }
+
+  void _zoomOutHome() {
+    setState(() {
+      isHomeTapped = false;
+    });
   }
 
   @override
@@ -221,14 +247,26 @@ class _ContenidoViewState extends State<ContenidoView>
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0)),
                       elevation: 10.0,
-                      child: Container(
-                        width: 60,
-                        height: 60,
+                      child: AnimatedContainer(
+                        duration: Duration(microseconds: 300),
+                        curve: Curves.easeOutBack,
+                        width: isHomeTapped ? 90 : 60,
+                        height: isHomeTapped ? 90 : 60,
                         child: Center(
-                          child: Image.asset(
-                            'assets/logos/home.png',
-                            width: 32,
-                            height: 32,
+                          child: InkWell(
+                            child: Image.asset(
+                              'assets/logos/home.png',
+                              width: 32,
+                              height: 32,
+                            ),
+                            onTap: () async {
+                              _zoomInHome();
+                              await Future<dynamic>.delayed(
+                                  const Duration(milliseconds: 200));
+                              _zoomOutHome();
+                              Navigator.of(context)
+                                  .pushReplacementNamed('/home');
+                            },
                           ),
                         ),
                       ),
@@ -248,9 +286,11 @@ class _ContenidoViewState extends State<ContenidoView>
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0)),
                       elevation: 10.0,
-                      child: Container(
-                        width: 60,
-                        height: 60,
+                      child: AnimatedContainer(
+                        width: isFavoriteTapped ? 120 : 60,
+                        height: isFavoriteTapped ? 120 : 60,
+                        duration: Duration(seconds: 2),
+                        curve: Curves.ease,
                         child: Center(
                             child: InkWell(
                           child: Icon(
@@ -260,7 +300,11 @@ class _ContenidoViewState extends State<ContenidoView>
                             color: ListAppTheme.nearlyBlue,
                             size: 32,
                           ),
-                          onTap: () {
+                          onTap: () async {
+                            _zoomInFavorite();
+                            await Future<dynamic>.delayed(
+                                const Duration(milliseconds: 200));
+                            _zoomOutFavorite();
                             model.addFavorite(reader.id);
                           },
                         )),
