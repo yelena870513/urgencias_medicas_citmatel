@@ -19,7 +19,7 @@ class ContenidoView extends StatefulWidget {
 
 class _ContenidoViewState extends State<ContenidoView>
     with TickerProviderStateMixin {
-  final double infoHeight = 364.0;
+  final double infoHeight = 400.0;
   AnimationController animationController;
   ScrollController _scrollController = new ScrollController();
   Animation<double> animation;
@@ -108,8 +108,8 @@ class _ContenidoViewState extends State<ContenidoView>
   @override
   Widget build(BuildContext context) {
     final double tempHeight = MediaQuery.of(context).size.height -
-        (MediaQuery.of(context).size.width / 1.2) +
-        24.0;
+        (MediaQuery.of(context).size.width / 1.7) +
+        50.0;
     setState(() {
       _mediaQuery = MediaQuery.of(context).size;
     });
@@ -128,14 +128,21 @@ class _ContenidoViewState extends State<ContenidoView>
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    AspectRatio(
-                      aspectRatio: 1.2,
-                      child: Image.asset('assets/temas/' + tema.image),
+                    Padding(
+                      padding: EdgeInsets.only(top: 45.0),
+                      child: AspectRatio(
+                        aspectRatio: 2.8,
+                        child: Image.asset(
+                          'assets/temas/' + tema.image,
+                          width: _mediaQuery.width * 0.15,
+                          height: _mediaQuery.height * 0.15,
+                        ),
+                      ),
                     ),
                   ],
                 ),
                 Positioned(
-                  top: (MediaQuery.of(context).size.width / 1.2) - 24.0,
+                  top: (MediaQuery.of(context).size.width / 1.7) - 50.0,
                   bottom: 0,
                   left: 0,
                   right: 0,
@@ -185,7 +192,7 @@ class _ContenidoViewState extends State<ContenidoView>
                                   opacity: opacity2,
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 16, right: 16, top: 8, bottom: 8),
+                                        left: 16, right: 16, top: 8, bottom: 0),
                                     child: SingleChildScrollView(
                                       controller: _scrollController,
                                       child: Html(
@@ -203,10 +210,16 @@ class _ContenidoViewState extends State<ContenidoView>
                                         style: {
                                           "span": Style(
                                               color: ListAppTheme.nearlyBlue,
-                                              fontSize: FontSize.medium,
+                                              fontSize: FontSize.xLarge,
                                               fontStyle: FontStyle.italic,
                                               textDecoration:
                                                   TextDecoration.underline),
+                                          "p": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(20)),
+                                          "strong": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(21))
                                         },
                                       ),
                                     ),
@@ -224,7 +237,7 @@ class _ContenidoViewState extends State<ContenidoView>
                   ),
                 ),
                 Positioned(
-                  top: (MediaQuery.of(context).size.width / 1.2) - 24.0 - 35,
+                  top: (MediaQuery.of(context).size.width / 1.7) - 50.0 - 35,
                   right: 35,
                   child: ScaleTransition(
                     alignment: Alignment.center,
@@ -241,7 +254,7 @@ class _ContenidoViewState extends State<ContenidoView>
                   ),
                 ),
                 Positioned(
-                  top: (MediaQuery.of(context).size.width / 1.2) - 24.0 - 35,
+                  top: (MediaQuery.of(context).size.width / 1.7) - 50.0 - 35,
                   left: 35,
                   child: ScaleTransition(
                     alignment: Alignment.center,
@@ -323,53 +336,5 @@ class _ContenidoViewState extends State<ContenidoView>
         },
       );
     });
-  }
-
-  Widget getTimeBoxUI(String text1, String txt2) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: ListAppTheme.nearlyWhite,
-          borderRadius: const BorderRadius.all(Radius.circular(16.0)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: ListAppTheme.grey.withOpacity(0.2),
-                offset: const Offset(1.1, 1.1),
-                blurRadius: 8.0),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(
-              left: 18.0, right: 18.0, top: 12.0, bottom: 12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                text1,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  letterSpacing: 0.27,
-                  color: ListAppTheme.nearlyBlue,
-                ),
-              ),
-              Text(
-                txt2,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w200,
-                  fontSize: 14,
-                  letterSpacing: 0.27,
-                  color: ListAppTheme.grey,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
