@@ -49,7 +49,7 @@ class RadioQuestionWidget extends StatelessWidget {
                           ? Icons.check_box
                           : Icons.check_box_outline_blank,
                       color: questionOption.isSelected
-                          ? ListAppTheme.nearlyBlue
+                          ? ListAppTheme.nearlyGreen
                           : Colors.grey.withOpacity(0.6),
                     ),
                     const SizedBox(

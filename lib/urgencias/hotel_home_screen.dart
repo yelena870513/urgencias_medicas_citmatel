@@ -315,7 +315,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           InkWell(
                             child: Icon(
                               Icons.favorite,
-                              color: ListAppTheme.nearlyBlue,
+                              color: ListAppTheme.nearlyGreen,
                             ),
                             onTap: () {},
                           ),
@@ -375,7 +375,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                               InkWell(
                                 child: Icon(
                                   Icons.history,
-                                  color: ListAppTheme.nearlyBlue,
+                                  color: ListAppTheme.nearlyGreen,
                                 ),
                                 onTap: () {},
                               ),
@@ -449,7 +449,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
           ),
           Container(
             decoration: BoxDecoration(
-              color: ListAppTheme.nearlyBlue,
+              color: ListAppTheme.nearlyGreen,
               borderRadius: const BorderRadius.all(
                 Radius.circular(38.0),
               ),
@@ -563,7 +563,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(FontAwesomeIcons.fileSignature,
-                                color: ListAppTheme.nearlyBlue),
+                                color: ListAppTheme.nearlyGreen),
                           ),
                         ],
                       ),

@@ -144,7 +144,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                                         ),
                                         Icon(
                                           Icons.bookmark_border,
-                                          color: ListAppTheme.nearlyBlue,
+                                          color: ListAppTheme.nearlyGreen,
                                           size: 24,
                                         ),
                                       ],
@@ -187,7 +187,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                   scale: CurvedAnimation(
                       parent: animationController, curve: Curves.fastOutSlowIn),
                   child: Card(
-                    color: Colors.lightBlue.withGreen(5),
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,
@@ -252,7 +252,7 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: ListAppTheme.nearlyBlue,
+                  color: ListAppTheme.nearlyGreen,
                 ),
               ),
               InkWell(

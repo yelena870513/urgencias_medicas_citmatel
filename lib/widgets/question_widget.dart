@@ -34,7 +34,7 @@ class QuestionWidget extends StatelessWidget {
             textAlign: TextAlign.left,
             style: TextStyle(
                 color: model.isQuestionLocked(questionId)
-                    ? ListAppTheme.nearlyBlue
+                    ? ListAppTheme.nearlyGreen
                     : Colors.black,
                 fontSize: MediaQuery.of(context).size.width > 360 ? 18 : 16,
                 fontWeight: FontWeight.w400),

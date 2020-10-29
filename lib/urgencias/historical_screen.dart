@@ -169,7 +169,7 @@ class _HistoricalScreen extends State<HistoricalScreen>
                           parent: animationController,
                           curve: Curves.fastOutSlowIn),
                       child: Card(
-                        color: Colors.lightBlue.withGreen(5),
+                        color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         elevation: 10.0,

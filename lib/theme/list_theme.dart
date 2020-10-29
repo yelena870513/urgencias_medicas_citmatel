@@ -6,6 +6,8 @@ class ListAppTheme {
   static const Color notWhite = Color(0xFFEDF0F2);
   static const Color nearlyWhite = Color(0xFFFFFFFF);
   static const Color nearlyBlue = Color(0xFF00B6F0);
+  static const Color nearlyGreen = Color(0xFF2AC0B1);
+  static const Color nearlySecondGreen = Color(0xFF54D3C2);
   static const Color nearlyBlack = Color(0xFF213333);
   static const Color grey = Color(0xFF3A5160);
   static const Color dark_grey = Color(0xFF313A44);
@@ -28,7 +30,8 @@ class ListAppTheme {
     caption: caption,
   );
 
-  static const TextStyle display1 = TextStyle( // h4 -> display1
+  static const TextStyle display1 = TextStyle(
+    // h4 -> display1
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.bold,
     fontSize: 36,
@@ -37,7 +40,8 @@ class ListAppTheme {
     color: darkerText,
   );
 
-  static const TextStyle headline = TextStyle( // h5 -> headline
+  static const TextStyle headline = TextStyle(
+    // h5 -> headline
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.bold,
     fontSize: 24,
@@ -45,7 +49,8 @@ class ListAppTheme {
     color: darkerText,
   );
 
-  static const TextStyle title = TextStyle( // h6 -> title
+  static const TextStyle title = TextStyle(
+    // h6 -> title
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.bold,
     fontSize: 16,
@@ -53,7 +58,8 @@ class ListAppTheme {
     color: darkerText,
   );
 
-  static const TextStyle subtitle = TextStyle( // subtitle2 -> subtitle
+  static const TextStyle subtitle = TextStyle(
+    // subtitle2 -> subtitle
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.w400,
     fontSize: 14,
@@ -61,7 +67,8 @@ class ListAppTheme {
     color: darkText,
   );
 
-  static const TextStyle body2 = TextStyle( // body1 -> body2
+  static const TextStyle body2 = TextStyle(
+    // body1 -> body2
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.w400,
     fontSize: 14,
@@ -69,7 +76,8 @@ class ListAppTheme {
     color: darkText,
   );
 
-  static const TextStyle body1 = TextStyle( // body2 -> body1
+  static const TextStyle body1 = TextStyle(
+    // body2 -> body1
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.w400,
     fontSize: 16,
@@ -77,7 +85,8 @@ class ListAppTheme {
     color: darkText,
   );
 
-  static const TextStyle caption = TextStyle( // Caption -> caption
+  static const TextStyle caption = TextStyle(
+    // Caption -> caption
     fontFamily: 'WorkSans',
     fontWeight: FontWeight.w400,
     fontSize: 12,
@@ -94,13 +103,11 @@ class ListAppTheme {
   );
 
   static const TextStyle questionUnderline = TextStyle(
-    fontFamily: 'WorkSans',
-    fontWeight: FontWeight.w500,
-    fontSize: 14,
-    letterSpacing: 0.2,
-    color: nearlyBlue,
-    decoration: TextDecoration.underline,
-    decorationColor: nearlyBlue
-  );
-
+      fontFamily: 'WorkSans',
+      fontWeight: FontWeight.w500,
+      fontSize: 14,
+      letterSpacing: 0.2,
+      color: nearlyGreen,
+      decoration: TextDecoration.underline,
+      decorationColor: nearlyGreen);
 }

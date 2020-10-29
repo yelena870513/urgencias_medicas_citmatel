@@ -209,7 +209,7 @@ class _ContenidoViewState extends State<ContenidoView>
                                         shrinkWrap: true,
                                         style: {
                                           "span": Style(
-                                              color: ListAppTheme.nearlyBlue,
+                                              color: ListAppTheme.nearlyGreen,
                                               fontSize: FontSize.xLarge,
                                               fontStyle: FontStyle.italic,
                                               textDecoration:
@@ -219,7 +219,22 @@ class _ContenidoViewState extends State<ContenidoView>
                                               fontSize: FontSize(20)),
                                           "strong": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(21))
+                                              fontSize: FontSize(21)),
+                                          "i": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(20)),
+                                          "b": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(21)),
+                                          "h4": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(21)),
+                                          "h3": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(22)),
+                                          "h5": Style(
+                                              color: ListAppTheme.body1.color,
+                                              fontSize: FontSize(19))
                                         },
                                       ),
                                     ),
@@ -245,7 +260,7 @@ class _ContenidoViewState extends State<ContenidoView>
                         parent: animationController,
                         curve: Curves.fastOutSlowIn),
                     child: Card(
-                      color: Colors.lightBlue.withGreen(5),
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0)),
                       elevation: 10.0,
@@ -262,7 +277,7 @@ class _ContenidoViewState extends State<ContenidoView>
                         parent: animationController,
                         curve: Curves.fastOutSlowIn),
                     child: Card(
-                      color: Colors.lightBlue.withGreen(5),
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0)),
                       elevation: 10.0,
@@ -277,7 +292,7 @@ class _ContenidoViewState extends State<ContenidoView>
                             model.isFavorite(reader.id)
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-                            color: ListAppTheme.nearlyBlue,
+                            color: ListAppTheme.nearlyGreen,
                             size: 32,
                           ),
                           onTap: () async {

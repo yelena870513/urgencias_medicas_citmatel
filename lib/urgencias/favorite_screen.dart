@@ -174,7 +174,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
                           parent: animationController,
                           curve: Curves.fastOutSlowIn),
                       child: Card(
-                        color: Colors.lightBlue.withGreen(5),
+                        color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         elevation: 10.0,
@@ -275,7 +275,7 @@ class _FavoriteScreenState extends State<FavoriteScreen>
               InkWell(
                 child: Icon(
                   FontAwesomeIcons.trash,
-                  color: ListAppTheme.nearlyBlue,
+                  color: ListAppTheme.nearlyGreen,
                   size: 16,
                 ),
                 onTap: () {

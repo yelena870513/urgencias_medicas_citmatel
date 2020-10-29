@@ -163,7 +163,7 @@ class _CreditosViewState extends State<CreditosView>
                   scale: CurvedAnimation(
                       parent: animationController, curve: Curves.fastOutSlowIn),
                   child: Card(
-                    color: Colors.lightBlue.withGreen(5),
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,
@@ -228,7 +228,7 @@ class _CreditosViewState extends State<CreditosView>
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: ListAppTheme.nearlyBlue,
+                  color: ListAppTheme.nearlyGreen,
                 ),
               ),
               InkWell(

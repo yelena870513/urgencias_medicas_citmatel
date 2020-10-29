@@ -163,7 +163,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                   scale: CurvedAnimation(
                       parent: animationController, curve: Curves.fastOutSlowIn),
                   child: Card(
-                    color: Colors.lightBlue.withGreen(5),
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50.0)),
                     elevation: 10.0,
@@ -240,7 +240,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: ListAppTheme.nearlyBlue,
+                  color: ListAppTheme.nearlyGreen,
                 ),
               ),
               InkWell(

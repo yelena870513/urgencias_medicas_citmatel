@@ -64,7 +64,7 @@ class _EjerciciosScreenState extends State<EjerciciosScreen> {
             child: Container(
               height: 48,
               decoration: BoxDecoration(
-                color: ListAppTheme.nearlyBlue,
+                color: ListAppTheme.nearlyGreen,
                 borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                 boxShadow: <BoxShadow>[
                   BoxShadow(

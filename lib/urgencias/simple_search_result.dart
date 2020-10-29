@@ -149,7 +149,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                                       ),
                                       Icon(
                                         Icons.bookmark_border,
-                                        color: ListAppTheme.nearlyBlue,
+                                        color: ListAppTheme.nearlyGreen,
                                         size: 24,
                                       ),
                                     ],
@@ -262,7 +262,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                       width: 140,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: ListAppTheme.nearlyGreen,
                         borderRadius:
                             const BorderRadius.all(Radius.circular(4.0)),
                         boxShadow: <BoxShadow>[
@@ -332,7 +332,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                   letterSpacing: 0.27,
-                  color: ListAppTheme.nearlyBlue,
+                  color: ListAppTheme.nearlyGreen,
                 ),
               ),
               InkWell(
