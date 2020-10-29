@@ -7,6 +7,7 @@ class Question {
   String header;
   List<QuestionOption> questionOption;
   bool isLocked = false;
+  bool isSubmitted = false;
 
   Question({
     @required this.id,

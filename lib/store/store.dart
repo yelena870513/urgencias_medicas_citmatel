@@ -77,7 +77,7 @@ class StoreModel extends Model {
   }
 
   TextStyle getQuestionStyle(QuestionOption questionOption) {
-    if (showAnswer) {
+    if (showAnswer && isParentQuestionLocked(questionOption)) {
       return questionOption.value
           ? ListAppTheme.questionUnderline
           : ListAppTheme.questionStyle;
@@ -119,6 +119,13 @@ class StoreModel extends Model {
 
   List<GalleryItem> get gallery {
     return _gallery.toList();
+  }
+
+  bool isParentQuestionLocked(QuestionOption questionOption) {
+    Question question = _questions.firstWhere((Question q) {
+      return q.questionOption.contains(questionOption);
+    });
+    return question.isLocked;
   }
 
   // Actions
