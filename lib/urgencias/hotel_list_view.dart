@@ -131,7 +131,7 @@ class HotelListView extends StatelessWidget {
           Icon(
             Icons.library_books,
             size: 12,
-            color: ListAppTheme.nearlyBlue,
+            color: ListAppTheme.,
           ),
           SizedBox(
             width: 8,
