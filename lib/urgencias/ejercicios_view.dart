@@ -153,7 +153,7 @@ class _EjerciciosScreenState extends State<EjerciciosScreen> {
             Expanded(
               child: Center(
                 child: Text(
-                  'Ejercicios',
+                  'Cuestionario',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 22,

@@ -554,7 +554,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       child: Row(
                         children: <Widget>[
                           Text(
-                            'Ejercicios',
+                            'Cuestionario',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
                               fontSize: model.fontSize,

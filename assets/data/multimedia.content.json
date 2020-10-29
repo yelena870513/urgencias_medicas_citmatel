@@ -1793,7 +1793,7 @@
     },
     {
       "cargo": "ISBN",
-      "name": "  978-959-237-790-5",
+      "name": "  978-959-237-793-6",
       "order": 7,
       "tipo": "equipo",
       "body": "",
@@ -1824,7 +1824,7 @@
       "id": 9
     },
     {
-      "cargo": "Copyright CITMATEL 2020",
+      "cargo": "Copyright CITMATEL © 2020",
       "name": "Todos los derechos reservados",
       "order": 10,
       "tipo": "equipo",
