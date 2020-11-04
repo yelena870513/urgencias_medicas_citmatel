@@ -1,5 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/style.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/equipo.dart';
 import 'package:urgencias_flutter/theme/list_theme.dart';
@@ -105,7 +108,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                             Padding(
                               padding: const EdgeInsets.only(
                                   top: 32.0, left: 18, right: 16),
-                              child: Text(
+                              child: AutoSizeText(
                                 'Autores',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
@@ -223,22 +226,22 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
             children: <Widget>[
               Container(
                 width: 200,
-                height: 200,
+                height: 180,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         image: AssetImage('assets/images/' + equipo.pic),
-                        fit: BoxFit.fill)),
+                        fit: BoxFit.cover)),
               ),
               SizedBox(
                 height: 10,
               ),
-              Text(
+              AutoSizeText(
                 equipo.name,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 14,
+                  fontSize: ScreenUtil().setSp(30),
                   letterSpacing: 0.27,
                   color: ListAppTheme.nearlyGreen,
                 ),
@@ -246,6 +249,11 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
               InkWell(
                 child: Html(
                   data: equipo.body,
+                  style: {
+                    "p": Style(
+                        color: ListAppTheme.body1.color,
+                        fontSize: FontSize(ScreenUtil().setSp(30)))
+                  },
                 ),
                 onTap: () {},
               ),

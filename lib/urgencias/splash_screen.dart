@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/store/store.dart';
 
@@ -51,6 +52,8 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: Size(750, 1334), allowFontScaling: false);
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
       return buildSplash(model);
@@ -69,7 +72,7 @@ class SplashScreenState extends State<SplashScreen> {
               fit: BoxFit.cover)),
       child: Center(
         child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightBlue)),
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen)),
       ),
     );
   }

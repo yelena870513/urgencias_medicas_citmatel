@@ -14,7 +14,6 @@ import 'package:urgencias_flutter/urgencias/splash_screen.dart';
 import 'package:urgencias_flutter/urgencias/temas_view.dart';
 import 'package:urgencias_flutter/urgencias/favorite_screen.dart';
 import 'package:urgencias_flutter/urgencias/historical_screen.dart';
-
 import 'models/tema.dart';
 
 void main() async {

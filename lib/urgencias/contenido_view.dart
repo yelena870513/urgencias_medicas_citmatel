@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_html/style.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
 import 'package:urgencias_flutter/models/tema.dart';
@@ -216,25 +217,32 @@ class _ContenidoViewState extends State<ContenidoView>
                                                   TextDecoration.underline),
                                           "p": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(20)),
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(35))),
                                           "strong": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(21)),
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(36))),
                                           "i": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(20)),
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(36))),
                                           "b": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(21)),
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(36))),
                                           "h4": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(21)),
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(38))),
                                           "h3": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(22)),
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(39))),
                                           "h5": Style(
                                               color: ListAppTheme.body1.color,
-                                              fontSize: FontSize(19))
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(37)))
                                         },
                                       ),
                                     ),

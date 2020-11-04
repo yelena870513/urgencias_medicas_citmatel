@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:toast/toast.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:urgencias_flutter/models/hotel_list_data.dart';
 import 'package:urgencias_flutter/models/tap_buttons_name.dart';
 import 'package:urgencias_flutter/store/store.dart';
@@ -322,7 +323,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           Padding(
                             padding: const EdgeInsets.only(left: 8),
                             child: SizedBox(
-                                child: Text('Favoritos',
+                                child: AutoSizeText('Favoritos',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: model.fontSize,
@@ -382,7 +383,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                               Padding(
                                 padding: const EdgeInsets.only(left: 8),
                                 child: SizedBox(
-                                    child: Text('Historial',
+                                    child: AutoSizeText('Historial',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w100,
                                           fontSize: model.fontSize,
@@ -520,7 +521,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
+                    child: AutoSizeText(
                       '${widget.model.getContenidos().toString()} contenidos',
                       style: TextStyle(
                         fontWeight: FontWeight.w100,
@@ -553,7 +554,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                       padding: const EdgeInsets.only(left: 8),
                       child: Row(
                         children: <Widget>[
-                          Text(
+                          AutoSizeText(
                             'Cuestionario',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
@@ -640,12 +641,13 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
             ),
             Expanded(
               child: Center(
-                child: Text(
+                child: AutoSizeText(
                   'Urgencias Médicas',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
+                  maxLines: 1,
                 ),
               ),
             ),

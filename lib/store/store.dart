@@ -26,7 +26,7 @@ class StoreModel extends Model {
 
   bool showContenidoScroll = false;
   bool showAnswer = false;
-  double fontSize = 16;
+  double fontSize = 18;
   double maxFontSize = 19;
   double minFontSize = 12;
   double themeFontSize = 22;

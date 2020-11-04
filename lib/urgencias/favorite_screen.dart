@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -251,16 +252,17 @@ class _FavoriteScreenState extends State<FavoriteScreen>
             children: <Widget>[
               InkWell(
                 child: SizedBox(
-                  child: Text(
+                  child: AutoSizeText(
                     contenido.titulo,
                     textAlign: TextAlign.center,
                     softWrap: true,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 14,
+                      fontSize: 20,
                       letterSpacing: 0.27,
                       color: ListAppTheme.nearlyBlack,
                     ),
+                    maxLines: 2,
                   ),
                   width: cWidth,
                 ),

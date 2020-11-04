@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
@@ -116,7 +117,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 32.0, left: 18, right: 16),
-                            child: Text(
+                            child: AutoSizeText(
                               'Resultados',
                               textAlign: TextAlign.left,
                               style: TextStyle(
@@ -137,7 +138,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                                 Container(
                                   child: Row(
                                     children: <Widget>[
-                                      Text(
+                                      AutoSizeText(
                                         contenidos.length.toString(),
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
@@ -192,7 +193,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                 scale: CurvedAnimation(
                     parent: animationController, curve: Curves.fastOutSlowIn),
                 child: Card(
-                  color: Colors.lightBlue.withGreen(5),
+                  color: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0)),
                   elevation: 10.0,
@@ -325,15 +326,16 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(
+              AutoSizeText(
                 contenido.tema.titulo,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 14,
+                  fontSize: 24,
                   letterSpacing: 0.27,
                   color: ListAppTheme.nearlyGreen,
                 ),
+                maxLines: 2,
               ),
               InkWell(
                 child: Text(
@@ -341,7 +343,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.w200,
-                    fontSize: 14,
+                    fontSize: 22,
                     letterSpacing: 0.27,
                     color: ListAppTheme.grey,
                   ),

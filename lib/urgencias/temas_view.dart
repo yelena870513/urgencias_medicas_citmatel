@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/contenido.dart';
@@ -256,15 +257,16 @@ class _TemasViewState extends State<TemasView> with TickerProviderStateMixin {
                 ),
               ),
               InkWell(
-                child: Text(
+                child: AutoSizeText(
                   contenido.titulo,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.w200,
-                    fontSize: 14,
+                    fontSize: 20,
                     letterSpacing: 0.27,
                     color: ListAppTheme.grey,
                   ),
+                  maxLines: 2,
                 ),
                 onTap: () {
                   Navigator.pushNamed(
