@@ -382,4 +382,44 @@ class StoreModel extends Model {
         questions.firstWhere((Question q) => q.id == questionId);
     return question.isLocked;
   }
+
+  List<Contenido> getSearchResults() {
+    List<int> bannedTopics = [14, 19, 22];
+    List<Contenido> searchResults = List<Contenido>();
+    if (_searchHelper.searchTerm.length > 3) {
+      List<String> terms =
+          _searchHelper.searchTerm.split(' ').where((String t) {
+        return t.isNotEmpty;
+      }).map((String t) {
+        return t
+            .toLowerCase()
+            .replaceAll('á', 'a')
+            .replaceAll('á', 'a')
+            .replaceAll('í', 'i')
+            .replaceAll('ó', 'o')
+            .replaceAll('ú', 'u');
+      }).toList();
+
+      _contenidos.forEach((Contenido c) {
+        final RegExp exp =
+            RegExp(r"<\/?[^>]+(>|$)", multiLine: true, caseSensitive: false);
+        final String texto = c.texto
+            .replaceAll(exp, '')
+            .replaceAll(RegExp(r'&aacute;'), 'a')
+            .replaceAll(RegExp(r'&eacute;'), 'e')
+            .replaceAll(RegExp(r'&iacute;'), 'i')
+            .replaceAll(RegExp(r'&oacute;'), 'o')
+            .replaceAll(RegExp(r'&uacute;'), 'u')
+            .replaceAll(RegExp(r'&ntilde;'), 'ñ');
+        terms.forEach((String f) {
+          if (texto.contains(f)) {
+            if (!bannedTopics.contains(c.tema.id)) {
+              searchResults.add(c);
+            }
+          }
+        });
+      });
+    }
+    return searchResults;
+  }
 }

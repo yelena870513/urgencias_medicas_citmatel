@@ -54,21 +54,19 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
         24.0;
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      model.buildSearchIndex();
-      return model.searchIndexCount > 0
-          ? resultsMatchScreen(context, model, tempHeight)
+      // model.buildSearchIndex();
+      List<Contenido> searchResults = model.getSearchResults();
+      searchResults.sort((Contenido a, Contenido b) {
+        return a.tema.id - b.tema.id;
+      });
+      return searchResults.length > 0
+          ? resultsMatchScreen(context, model, tempHeight, searchResults)
           : resultsNoneScreen(context, model);
     });
   }
 
-  Widget resultsMatchScreen(
-      BuildContext context, StoreModel model, double tempHeight) {
-    List<Contenido> contenidos = model.indexContenido.where((Contenido c) {
-      return c.tema.id != 14 && c.tema.id != 22 && c.tema.id != 19;
-    }).toList();
-    contenidos.sort((Contenido a, Contenido b) {
-      return a.tema.id - b.tema.id;
-    });
+  Widget resultsMatchScreen(BuildContext context, StoreModel model,
+      double tempHeight, List<Contenido> searchResults) {
     return Container(
       color: ListAppTheme.nearlyWhite,
       child: Scaffold(
@@ -139,7 +137,7 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                                   child: Row(
                                     children: <Widget>[
                                       AutoSizeText(
-                                        contenidos.length.toString(),
+                                        searchResults.length.toString(),
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w200,
@@ -170,8 +168,8 @@ class _SimpleSearchResultView extends State<SimpleSearchResultView>
                                 itemBuilder:
                                     (BuildContext context, int index) =>
                                         getContenidoBox(
-                                            '', contenidos[index], model),
-                                itemCount: contenidos.length,
+                                            '', searchResults[index], model),
+                                itemCount: searchResults.length,
                               ),
                             ),
                           )),
