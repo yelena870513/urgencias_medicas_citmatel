@@ -52,8 +52,7 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context,
-        designSize: Size(750, 1334), allowFontScaling: false);
+    ScreenUtil.init(context, allowFontScaling: false);
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
       return buildSplash(model);
@@ -68,7 +67,7 @@ class SplashScreenState extends State<SplashScreen> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/screen.png'),
+              image: AssetImage('assets/images/screen.jpg'),
               fit: BoxFit.cover)),
       child: Center(
         child: CircularProgressIndicator(

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:urgencias_flutter/models/tema.dart';
 import 'package:urgencias_flutter/store/store.dart';
@@ -96,7 +97,8 @@ class HotelListView extends StatelessWidget {
                                                 textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
-                                                  fontSize: 20,
+                                                  fontSize:
+                                                      ScreenUtil().setSp(39),
                                                 ),
                                               ),
                                               buildCounterBox(contenidoCount)
@@ -131,7 +133,7 @@ class HotelListView extends StatelessWidget {
         children: <Widget>[
           Icon(
             Icons.library_books,
-            size: 12,
+            size: ScreenUtil().setSp(18),
             color: ListAppTheme.nearlyGreen,
           ),
           SizedBox(
@@ -141,8 +143,9 @@ class HotelListView extends StatelessWidget {
             child: AutoSizeText(
               '${contenidoCount.toString()} contenidos',
               overflow: TextOverflow.ellipsis,
-              style:
-                  TextStyle(fontSize: 18, color: Colors.grey.withOpacity(0.8)),
+              style: TextStyle(
+                  fontSize: ScreenUtil().setSp(36),
+                  color: Colors.grey.withOpacity(0.8)),
             ),
           ),
         ],

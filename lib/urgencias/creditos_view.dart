@@ -107,7 +107,7 @@ class _CreditosViewState extends State<CreditosView>
                               padding: const EdgeInsets.only(
                                   top: 32.0, left: 18, right: 16),
                               child: Text(
-                                'Créditos Institucionales',
+                                'Créditos Realización',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -231,6 +231,7 @@ class _CreditosViewState extends State<CreditosView>
                   letterSpacing: 0.27,
                   color: ListAppTheme.nearlyGreen,
                 ),
+                maxLines: 1,
               ),
               InkWell(
                 child: AutoSizeText(
@@ -242,6 +243,7 @@ class _CreditosViewState extends State<CreditosView>
                     letterSpacing: 0.27,
                     color: ListAppTheme.grey,
                   ),
+                  maxLines: 2,
                 ),
                 onTap: () {},
               ),
