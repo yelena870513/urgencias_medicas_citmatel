@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:toast/toast.dart';
@@ -326,7 +327,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                 child: AutoSizeText('Favoritos',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
-                                      fontSize: model.fontSize,
+                                      fontSize: ScreenUtil().setSp(22),
                                     ),
                                     softWrap: true),
                                 width: 115),
@@ -386,7 +387,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                                     child: AutoSizeText('Historial',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w100,
-                                          fontSize: model.fontSize,
+                                          fontSize: ScreenUtil().setSp(20),
                                         ),
                                         softWrap: true),
                                     width: 90),
@@ -645,7 +646,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                   'Urgencias Médicas',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 18,
+                    fontSize: ScreenUtil().setSp(32),
                   ),
                   maxLines: 1,
                 ),
@@ -677,8 +678,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           padding: const EdgeInsets.all(8.0),
                           child: Image.asset(
                             'assets/logos/autor.png',
-                            width: _isAuthorButtonTapped ? 24 : 18,
-                            height: _isAuthorButtonTapped ? 24 : 18,
+                            width: _isAuthorButtonTapped
+                                ? ScreenUtil().setWidth(48)
+                                : ScreenUtil().setWidth(24),
+                            height: _isAuthorButtonTapped
+                                ? ScreenUtil().setWidth(48)
+                                : ScreenUtil().setWidth(24),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -704,8 +709,12 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                           padding: const EdgeInsets.all(8.0),
                           child: Image.asset(
                             'assets/logos/credits.png',
-                            width: _isCreditButtonTapped ? 32 : 24,
-                            height: _isCreditButtonTapped ? 32 : 24,
+                            width: _isCreditButtonTapped
+                                ? ScreenUtil().setWidth(48)
+                                : ScreenUtil().setWidth(24),
+                            height: _isCreditButtonTapped
+                                ? ScreenUtil().setWidth(48)
+                                : ScreenUtil().setWidth(24),
                             fit: BoxFit.cover,
                           ),
                         ),

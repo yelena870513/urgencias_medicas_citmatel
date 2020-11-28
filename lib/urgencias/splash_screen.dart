@@ -52,7 +52,8 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, allowFontScaling: false);
+    Size size = MediaQuery.of(context).size;
+    ScreenUtil.init(context, allowFontScaling: false, designSize: size);
     return ScopedModelDescendant<StoreModel>(
         builder: (BuildContext context, Widget child, StoreModel model) {
       return buildSplash(model);
