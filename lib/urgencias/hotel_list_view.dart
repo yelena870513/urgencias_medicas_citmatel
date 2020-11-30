@@ -98,8 +98,9 @@ class HotelListView extends StatelessWidget {
                                                 style: TextStyle(
                                                   fontWeight: FontWeight.w600,
                                                   fontSize:
-                                                      ScreenUtil().setSp(39),
+                                                      ScreenUtil().setSp(24),
                                                 ),
+                                                maxLines: 1,
                                               ),
                                               buildCounterBox(contenidoCount)
                                             ],
@@ -133,7 +134,7 @@ class HotelListView extends StatelessWidget {
         children: <Widget>[
           Icon(
             Icons.library_books,
-            size: ScreenUtil().setSp(18),
+            size: ScreenUtil().setSp(15),
             color: ListAppTheme.nearlyGreen,
           ),
           SizedBox(
@@ -144,7 +145,7 @@ class HotelListView extends StatelessWidget {
               '${contenidoCount.toString()} contenidos',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                  fontSize: ScreenUtil().setSp(36),
+                  fontSize: ScreenUtil().setSp(20),
                   color: Colors.grey.withOpacity(0.8)),
             ),
           ),

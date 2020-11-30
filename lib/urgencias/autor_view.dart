@@ -113,7 +113,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: ScreenUtil().setSp(40),
+                                  fontSize: ScreenUtil().setSp(35),
                                   letterSpacing: 0.27,
                                   color: ListAppTheme.darkerText,
                                 ),
@@ -241,7 +241,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: ScreenUtil().setSp(38),
+                  fontSize: ScreenUtil().setSp(25),
                   letterSpacing: 0.27,
                   color: ListAppTheme.nearlyGreen,
                 ),
@@ -252,7 +252,7 @@ class _AutorViewState extends State<AutorView> with TickerProviderStateMixin {
                   style: {
                     "p": Style(
                         color: ListAppTheme.body1.color,
-                        fontSize: FontSize(ScreenUtil().setSp(36)))
+                        fontSize: FontSize(ScreenUtil().setSp(20)))
                   },
                 ),
                 onTap: () {},

@@ -211,38 +211,41 @@ class _ContenidoViewState extends State<ContenidoView>
                                         style: {
                                           "span": Style(
                                               color: ListAppTheme.nearlyGreen,
-                                              fontSize: FontSize.xLarge,
+                                              fontSize: FontSize(
+                                                  ScreenUtil().setSp(24)),
                                               fontStyle: FontStyle.italic,
                                               textDecoration:
                                                   TextDecoration.underline),
+                                          "u": Style(
+                                              color: ListAppTheme.nearlyGreen),
                                           "p": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(35))),
+                                                  ScreenUtil().setSp(22))),
                                           "strong": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(36))),
+                                                  ScreenUtil().setSp(23))),
                                           "i": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(36))),
+                                                  ScreenUtil().setSp(22))),
                                           "b": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(36))),
+                                                  ScreenUtil().setSp(22))),
                                           "h4": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(38))),
+                                                  ScreenUtil().setSp(28))),
                                           "h3": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(39))),
+                                                  ScreenUtil().setSp(29))),
                                           "h5": Style(
                                               color: ListAppTheme.body1.color,
                                               fontSize: FontSize(
-                                                  ScreenUtil().setSp(37)))
+                                                  ScreenUtil().setSp(27)))
                                         },
                                       ),
                                     ),

@@ -44,6 +44,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
     animationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
     super.initState();
+    widget.model.clearSearchResults();
   }
 
   Future<bool> getData() async {

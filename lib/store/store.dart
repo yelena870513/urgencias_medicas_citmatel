@@ -388,9 +388,7 @@ class StoreModel extends Model {
     List<Contenido> searchResults = List<Contenido>();
     if (_searchHelper.searchTerm.length > 3) {
       List<String> terms =
-          _searchHelper.searchTerm.split(' ').where((String t) {
-        return t.isNotEmpty;
-      }).map((String t) {
+          [_searchHelper.searchTerm].map((String t) {
         return t
             .toLowerCase()
             .replaceAll('á', 'a')
@@ -414,7 +412,9 @@ class StoreModel extends Model {
         terms.forEach((String f) {
           if (texto.contains(f)) {
             if (!bannedTopics.contains(c.tema.id)) {
-              searchResults.add(c);
+              if (!searchResults.contains(c)) {
+                searchResults.add(c);
+              }
             }
           }
         });

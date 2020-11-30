@@ -27,7 +27,7 @@ class HomeNamedButtonLink extends StatelessWidget {
         onTap: () async {
           isHomeButtonTapped.value = true;
           await Future<dynamic>.delayed(const Duration(milliseconds: 500));
-          Navigator.of(context).pushNamed('/home');
+          Navigator.of(context).popAndPushNamed('/home');
         },
       ),
     );
