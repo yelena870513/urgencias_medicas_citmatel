@@ -37,8 +37,10 @@ class _ImageScreenState extends State<ImageScreen> {
     Size size = MediaQuery.of(context).size;
     return ScopedModelDescendant(
         builder: (BuildContext context, Widget child, StoreModel model) {
-      GalleryItem galleryItem = model.gallery.firstWhere(
-          (GalleryItem g) => widget.imagePath.indexOf(g.file) != -1);
+      final String imageFile =
+          widget.imagePath.split("/").reversed.toList().elementAt(0);
+      GalleryItem galleryItem =
+          model.gallery.firstWhere((GalleryItem g) => imageFile == g.file);
       String caption = galleryItem != null ? galleryItem.caption : '';
       return Scaffold(
           backgroundColor: HotelAppTheme.buildLightTheme().backgroundColor,

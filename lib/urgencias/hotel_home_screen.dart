@@ -385,7 +385,7 @@ class _HotelHomeScreenState extends State<HotelHomeScreen>
                               Padding(
                                 padding: const EdgeInsets.only(left: 8),
                                 child: SizedBox(
-                                    child: AutoSizeText('Historial',
+                                    child: AutoSizeText('Histórico',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w100,
                                           fontSize: ScreenUtil().setSp(20),
