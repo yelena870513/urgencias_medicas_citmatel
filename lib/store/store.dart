@@ -66,6 +66,21 @@ class StoreModel extends Model {
     return _searchHelper.idSearchResults;
   }
 
+  int get selectedOptionsCount {
+    return _questions
+        .where((Question q) {
+          return q.questionOption
+                  .where((QuestionOption qo) {
+                    return qo.isSelected;
+                  })
+                  .toList()
+                  .length >
+              0;
+        })
+        .toList()
+        .length;
+  }
+
   int getTemasCount(Tema tema) {
     return _contenidos
         .where((Contenido contenido) => contenido.tema.id == tema.id)
@@ -77,7 +92,7 @@ class StoreModel extends Model {
   }
 
   TextStyle getQuestionStyle(QuestionOption questionOption) {
-    if (showAnswer && isParentQuestionLocked(questionOption)) {
+    if (showAnswer) {
       return questionOption.value
           ? ListAppTheme.questionUnderline
           : ListAppTheme.questionStyle;
@@ -181,17 +196,31 @@ class StoreModel extends Model {
 
   void setSelectedQuestionOption(QuestionOption questionOption, bool value) {
     if (_questions.length > 0) {
+      int questionPos = -1;
       for (int i = 0; i < _questions.length; i++) {
         Question question = _questions[i];
         List<QuestionOption> questionSet = question.questionOption;
         for (int j = 0; j < questionSet.length; j++) {
           if (questionSet[j].id.compareTo(questionOption.id) == 0) {
             _questions[i].questionOption[j].isSelected = value;
-            _questions[i].isLocked = value;
+            questionPos = i;
             notifyListeners();
             break;
           }
         }
+      }
+
+      // uncheck related questions
+      if (value) {
+        List<QuestionOption> questionSetToUncheck = _questions[questionPos]
+            .questionOption
+            .where((QuestionOption option) {
+          return option.id != questionOption.id;
+        }).toList();
+        questionSetToUncheck.forEach((QuestionOption p) {
+          p.isSelected = !value;
+        });
+        notifyListeners();
       }
     }
   }
@@ -211,6 +240,11 @@ class StoreModel extends Model {
 
   void toggleAnswers() {
     showAnswer = !showAnswer;
+    notifyListeners();
+  }
+
+  void setAnswersOff() {
+    showAnswer = false;
     notifyListeners();
   }
 
@@ -387,8 +421,7 @@ class StoreModel extends Model {
     List<int> bannedTopics = [14, 19, 22];
     List<Contenido> searchResults = List<Contenido>();
     if (_searchHelper.searchTerm.length > 3) {
-      List<String> terms =
-          [_searchHelper.searchTerm].map((String t) {
+      List<String> terms = [_searchHelper.searchTerm].map((String t) {
         return t
             .toLowerCase()
             .replaceAll('á', 'a')
@@ -421,5 +454,19 @@ class StoreModel extends Model {
       });
     }
     return searchResults;
+  }
+
+  void lockQuestions() {
+    _questions.forEach((Question q) {
+      q.isLocked = true;
+    });
+    notifyListeners();
+  }
+
+  void releaseQuestions() {
+    _questions.forEach((Question q) {
+      q.isLocked = false;
+    });
+    notifyListeners();
   }
 }

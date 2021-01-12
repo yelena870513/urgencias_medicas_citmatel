@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:toast/toast.dart';
 import 'package:urgencias_flutter/models/popular_filter_list.dart';
 import 'package:urgencias_flutter/models/question.dart';
 import 'package:urgencias_flutter/store/store.dart';
@@ -80,7 +81,13 @@ class _EjerciciosScreenState extends State<EjerciciosScreen> {
                   borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    model.toggleAnswers();
+                    if (model.selectedOptionsCount > 0) {
+                      model.toggleAnswers();
+                      model.lockQuestions();
+                    } else {
+                      Toast.show("Seleccione al menos una respuesta", context,
+                          duration: 4, gravity: Toast.CENTER);
+                    }
                   },
                   child: Center(
                     child: Text(
@@ -140,7 +147,9 @@ class _EjerciciosScreenState extends State<EjerciciosScreen> {
                     Radius.circular(32.0),
                   ),
                   onTap: () {
+                    model.releaseQuestions();
                     model.clearAnswers();
+                    model.setAnswersOff();
                     Navigator.pop(context);
                   },
                   child: Padding(
