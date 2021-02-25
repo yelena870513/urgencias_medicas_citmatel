@@ -41,6 +41,10 @@ class QuestionWidget extends StatelessWidget {
           ),
         ),
         Padding(
+          padding: const EdgeInsets.all(1.0),
+          child: _getAvailableImage(question),
+        ),
+        Padding(
           padding: const EdgeInsets.only(right: 16, left: 16),
           child: Column(
             children: getQuestionOptionList(question),
@@ -76,5 +80,20 @@ class QuestionWidget extends StatelessWidget {
       ));
     }
     return noList;
+  }
+
+  Widget _getAvailableImage(Question question) {
+    Widget imageSize = Text('Image');
+    if (question.image.isNotEmpty) {
+      imageSize = Container(
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5.0))),
+        child: Image.asset(
+          'assets/images/img/' + question.image
+        ),
+      );
+    }
+
+    return imageSize;
   }
 }

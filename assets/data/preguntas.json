@@ -1,210 +1,301 @@
 {
-  "preguntas":[
+  "preguntas": [
     {
-      "id":1,
-      "type":"radio",
-      "form":"05e32e85",
-      "formObject":"undefined",
-      "group":"7cc79a71-3533-11e8-b3cf-0242ac120002",
-      "header":"Sobre Urgencia Hipertensiva marque la opción correcta:",
-      "questionSet":[
+      "id": 1,
+      "type": "radio",
+      "form": "05e32e85",
+      "formObject": "undefined",
+      "group": "7cc79a71-3533-11e8-b3cf-0242ac120002",
+      "header": "1. Sobre Urgencia Hipertensiva marque la opción correcta:",
+      "image": "",
+      "questionSet": [
         {
-          "id":"14859c04-3531-11e8-b3cf-0242ac120002",
-          "text":"No se puede usar la vía oral para administrar los medicamentos.",
-          "value":false
+          "id": "14859c04-3531-11e8-b3cf-0242ac120002",
+          "text": "No se puede usar la vía oral para administrar los medicamentos.",
+          "value": false
         },
         {
-          "id":"25497e23-3531-11e8-b3cf-0242ac120002",
-          "text":"El descenso de la Tensión Arterial debe ser en las primeras 24 horas.",
-          "value":true
-        }
-      ,
-        {
-          "id":"2b97211a-3531-11e8-b3cf-0242ac120002",
-          "text":"Existe afectación de órganos diana.",
-          "value":false
-        }
-      ,
-        {
-          "id":"33084a14-3531-11e8-b3cf-0242ac120002",
-          "text":"En el Estadío 1 no se recomienda la utilización de diuréticos.",
-          "value":false
-        }
-      ]
-    },
-    {
-      "id":2,
-      "type":"radio",
-      "form":"05e73fdd",
-      "formObject":"undefined",
-      "group":"8a4fda9a-3533-11e8-b3cf-0242ac120002",
-      "header":"Sobre Intoxicación por Metanol marque la opción correcta:",
-      "questionSet":[
-        {
-          "id":"39e2bdd0-3531-11e8-b3cf-0242ac120002",
-          "text":"No se considera grave.",
-          "value":false
-        },
-        {
-          "id":"40745db3-3531-11e8-b3cf-0242ac120002",
-          "text":"Nunca el paciente llega al coma.",
-          "value":false
-        }
-      ,
-        {
-          "id":"462429ba-3531-11e8-b3cf-0242ac120002",
-          "text":"Causa ceguera por lesión del nervio óptico.",
-          "value":true
-        }
-      ,
-        {
-          "id":"4cb478e2-3531-11e8-b3cf-0242ac120002",
-          "text":"No se realiza lavado gástrico.",
-          "value":false
-        }
-      ]
-    },
-    {
-      "id":3,
-      "type":"radio",
-      "form":"dce2ab17",
-      "formObject":"undefined",
-      "group":"969920d5-3533-11e8-b3cf-0242ac120002",
-      "header":"Marque la opción correcta sobre la Apendicitis Aguda:",
-      "questionSet":[
-        {
-          "id":"5262fb3c-3531-11e8-b3cf-0242ac120002",
-          "text":"Signo de Blumberg positivo.",
-          "value":true
-        },
-        {
-          "id":"57a4f83f-3531-11e8-b3cf-0242ac120002",
-          "text":"No existe diferencia entre temperatura axilar y rectal.",
-          "value":false
-        }
-      ,{
-          "id":"5ebf9f53-3531-11e8-b3cf-0242ac120002",
-          "text":"Presenta dolor en hipogastrio sin irradiación.",
-          "value":false
-        }
-      ,
-        {
-          "id":"64016db5-3531-11e8-b3cf-0242ac120002",
-          "text":"No es necesario la remisión hacia cirugía.",
-          "value":false
-        }
-      ]
-    },
-    {
-      "id":4,
-      "type":"radio",
-      "form":"82c89f6d",
-      "formObject":"undefined",
-      "group":"9cdb7620-3533-11e8-b3cf-0242ac120002",
-      "header":"Marque la opción correcta sobre la Apendicitis Aguda:",
-      "questionSet":[
-        {
-          "id":"8aa5396e-3531-11e8-b3cf-0242ac120002",
-          "text":"No es necesario garantizar vía aérea permeable.",
-          "value":false
-        },
-        {
-          "id":"901d1b52-3531-11e8-b3cf-0242ac120002",
-          "text":"Su clínica es inespecífica, aunque el síntoma capital es la disnea.",
-          "value":true
-        }
-      ,{
-          "id":"95b4cd20-3531-11e8-b3cf-0242ac120002",
-          "text":"En los casos graves nunca aparecen daños neurológicos.",
-          "value":false
-        }
-      ,
-        {
-          "id":"a83f98e7-3531-11e8-b3cf-0242ac120002",
-          "text":"No es necesario mejorar la oxigenación.",
-          "value":false
-        }
-      ]
-    },
-    {
-      "id":5,
-      "type":"radio",
-      "form":"b07e4efc",
-      "formObject":"undefined",
-      "group":"ac1c8e7a-3533-11e8-b3cf-0242ac120002",
-      "header":"Marque la opción correcta sobre la Apendicitis Aguda:",
-      "questionSet":[
-        {
-          "id":"b71f10ea-3531-11e8-b3cf-0242ac120002",
-          "text":"Deterioro lento y progresivo de la función renal.",
-          "value":false
-        },
-        {
-          "id":"bcef7dd1-3531-11e8-b3cf-0242ac120002",
-          "text":"La IRA postrenal es solo por obstrucción intrínseca.",
-          "value":true
-        }
-      ,{
-          "id":"c20359c5-3531-11e8-b3cf-0242ac120002",
-          "text":"El tratamiento se realiza en el área de atención primaria.",
-          "value":false
-        }
-      ,
-        {
-          "id":"c6e10e9e-3531-11e8-b3cf-0242ac120002",
-          "text":"La forma oligúrica es producida casi siempre por nefrotoxinas.",
-          "value":true
-        }
-      ]
-    },
-    {
-      "id":6,
-      "type":"radio",
-      "form":"54766c20",
-      "formObject":"undefined",
-      "group":"8f77872b-35ff-11e8-af44-0242ac120003",
-      "header":"Posible diagnóstico radiológico:",
-      "questionSet":[
-        {
-          "id":"bd14fb8a-35ff-11e8-af44-0242ac120003",
-          "text":"Neumonía.",
+          "id": "25497e23-3531-11e8-b3cf-0242ac120002",
+          "text": "El descenso de la Tensión Arterial debe ser en las primeras 24 horas.",
           "value": true
-
-        }
-      ,
+        },
         {
-          "id":"f105a407-35ff-11e8-af44-0242ac120003",
-          "text":"Oclusión Intestinal Alta.",
-          "value": true
-
+          "id": "2b97211a-3531-11e8-b3cf-0242ac120002",
+          "text": "Existe afectación de órganos diana.",
+          "value": false
+        },
+        {
+          "id": "33084a14-3531-11e8-b3cf-0242ac120002",
+          "text": "En el Estadio 1 no se recomienda la utilización de diuréticos.",
+          "value": false
         }
-
       ]
     },
     {
-      "id":9,
-      "type":"radio",
-      "form":"b4e5c7e3",
-      "formObject":"undefined",
-      "group":"bcb77287-3600-11e8-af44-0242ac120003",
-      "header":"Posible diagnóstico Radiográfico:",
-      "questionSet":[
+      "id": 2,
+      "type": "image",
+      "header": "2. Posible diagnóstico radiológico",
+      "image": "imagen2.png",
+      "questionSet": [
         {
-          "id":"c1e4440a-3600-11e8-af44-0242ac120003",
-          "text":"Edema Agudo del Pulmón.",
-           "value": true
-
+          "id": "39e2bdd0-1",
+          "text": "Neumotórax.",
+          "value": false
         },
         {
-          "id": "f105a407-35ff-11e8-af44-0242ac128521",
-          "text": "Oclusión Intestinal Alta.",
-           "value": false
-
+          "id": "39e2bdd0-2",
+          "text": "Consolidación pulmonar derecha.",
+          "value": true
+        },
+        {
+          "id": "39e2bdd0-3",
+          "text": "Derrame pleural de moderada cuantía.",
+          "value": false
+        },
+        {
+          "id": "39e2bdd0-4",
+          "text": "Cardiomegalia.",
+          "value": false
         }
-
-
+      ]
+    },
+    {
+      "id": 3,
+      "type": "radio",
+      "form": "05e73fdd",
+      "formObject": "undefined",
+      "group": "8a4fda9a-3533-11e8-b3cf-0242ac120002",
+      "header": "2. Sobre Intoxicación por Metanol marque la opción correcta:",
+      "image": "",
+      "questionSet": [
+        {
+          "id": "39e2bdd0-3531-11e8-b3cf-0242ac120002",
+          "text": "No se considera grave.",
+          "value": false
+        },
+        {
+          "id": "40745db3-3531-11e8-b3cf-0242ac120002",
+          "text": "Nunca el paciente llega al coma. ",
+          "value": false
+        },
+        {
+          "id": "462429ba-3531-11e8-b3cf-0242ac120002",
+          "text": "Causa ceguera por lesión del nervio óptico.",
+          "value": true
+        },
+        {
+          "id": "4cb478e2-3531-11e8-b3cf-0242ac120002",
+          "text": "No se realiza lavado gástrico. ",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "image",
+      "form": "dce2ab17",
+      "formObject": "undefined",
+      "group": "969920d5-3533-11e8-b3cf-p",
+      "header": "4. Posible diagnóstico radiológico:",
+      "image": "imagen4.png",
+      "questionSet": [
+        {
+          "id": "5262fb3c-3531-1",
+          "text": "Oclusión intestinal baja.",
+          "value": false
+        },
+        {
+          "id": "5262fb3c-3531-2",
+          "text": "Megacolon tóxico.",
+          "value": true
+        },
+        {
+          "id": "5262fb3c-3531-3",
+          "text": "Oclusión intestinal baja.",
+          "value": false
+        },
+        {
+          "id": "5262fb3c-3531-4",
+          "text": "Ascitis.",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "radio",
+      "form": "dce2ab17",
+      "formObject": "undefined",
+      "group": "969920d5-3533-11e8-b3cf-0242ac120002",
+      "header": "3. Marque la opción correcta sobre la Apendicitis Aguda:",
+      "image": "",
+      "questionSet": [
+        {
+          "id": "5262fb3c-3531-11e8-b3cf-0242ac120002",
+          "text": "Signo de Blumberg positivo.",
+          "value": true
+        },
+        {
+          "id": "57a4f83f-3531-11e8-b3cf-0242ac120002",
+          "text": "No existe diferencia entre temperatura axilar y rectal.",
+          "value": false
+        },
+        {
+          "id": "5ebf9f53-3531-11e8-b3cf-0242ac120002",
+          "text": "Presenta dolor en hipogastrio sin irradiación.",
+          "value": false
+        },
+        {
+          "id": "64016db5-3531-11e8-b3cf-0242ac120002",
+          "text": "No es necesario la remisión hacia cirugía.",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "image",
+      "form": "82c89f6d",
+      "formObject": "undefined",
+      "group": "9cdb7620-3533-11e8-b3cf-p0o9i8",
+      "header": "6. ¿Qué tipo de arritmia muestra el electrocardiograma?",
+      "image": "imagen6.png",
+      "questionSet": [
+        {
+          "id": "8aa5396e-11e8-1",
+          "text": "Fibrilación auricular.",
+          "value": true
+        },
+        {
+          "id": "8aa5396e-11e8-2",
+          "text": "Fibrilación ventricular.",
+          "value": false
+        },
+        {
+          "id": "8aa5396e-11e8-3",
+          "text": "Asistolia.",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "radio",
+      "form": "82c89f6d",
+      "formObject": "undefined",
+      "group": "9cdb7620-3533-11e8-b3cf-00000000",
+      "header": "7. Marque la opción correcta sobre la Insuficiencia Respiratoria Aguda:",
+      "image": "",
+      "questionSet": [
+        {
+          "id": "8aa5396e-b3cf-1",
+          "text": "No es necesario garantizar vía aérea permeable.",
+          "value": false
+        },
+        {
+          "id": "8aa5396e-b3cf-2",
+          "text": "Su clínica es inespecífica, aunque el síntoma capital es la disnea.",
+          "value": true
+        },
+        {
+          "id": "8aa5396e-b3cf-3",
+          "text": "En los casos graves nunca aparecen daños neurológicos.",
+          "value": false
+        },
+        {
+          "id": "a83f98e7-3531-11e8-b3cf-0242ac120002",
+          "text": "No es necesario mejorar la oxigenación.",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "image",
+      "form": "b07e4efc",
+      "formObject": "undefined",
+      "group": "ac1c8e7a-3533-11e8-b3cf-0242ac120002",
+      "header": "8. Diga tipo de fractura se ve en la Radiografía",
+      "image": "imagen8.png",
+      "questionSet": [
+        {
+          "id": "b71f10ea-3531-11e8-b3cf-b1",
+          "text": "Fractura incompleta.",
+          "value": true
+        },
+        {
+          "id": "bcef7dd1-3531-11e8-b3cf-b2",
+          "text": "Fractura completa.",
+          "value": false
+        },
+        {
+          "id": "c20359c5-3531-11e8-b3cf-b3",
+          "text": "Fractura consolidada.",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "radio",
+      "form": "b07e4efc",
+      "formObject": "undefined",
+      "group": "ac1c8e7a-3533-11e8-b3cf-00022222",
+      "header": "9. Sobre la Insuficiencia Renal Aguda (IRA) marque la opción correcta:",
+      "image": "",
+      "questionSet": [
+        {
+          "id": "b71f10ea-3531-11e8-b3cf-a1",
+          "text": "Deterioro lento y progresivo de la función renal.",
+          "value": false
+        },
+        {
+          "id": "bcef7dd1-3531-11e8-b3cf-a2",
+          "text": "La IRA postrenal es solo por obstrucción intrínseca.",
+          "value": false
+        },
+        {
+          "id": "c20359c5-3531-11e8-b3cf-a3",
+          "text": "El tratamiento se realiza en el área de atención primaria.",
+          "value": false
+        },
+        {
+          "id": "c6e10e9e-3531-11e8-b3cf-a4",
+          "text": "La forma oligúrica es producida casi siempre por nefrotoxinas.",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "image",
+      "form": "b07e4efc",
+      "formObject": "undefined",
+      "group": "ac1c8e7a-3533-11e8-b3cf-00000001",
+      "header": "10 Posible diagnóstico Radiográfico:",
+      "image": "imagen10.png",
+      "questionSet": [
+        {
+          "id": "b71f10ea-3531-11e8-b3cf-1",
+          "text": "Neumotórax bilateral.",
+          "value": false
+        },
+        {
+          "id": "bcef7dd1-3531-11e8-b3cf-2",
+          "text": "Edema agudo del pulmón.",
+          "value": true
+        },
+        {
+          "id": "c20359c5-3531-11e8-b3cf-3",
+          "text": "Signo de atrapamiento de aire.",
+          "value": false
+        },
+        {
+          "id": "c6e10e9e-3531-11e8-b3cf-4",
+          "text": "La forma oligúrica es producida casi siempre por nefrotoxinas.",
+          "value": false
+        }
       ]
     }
-
   ]
 }

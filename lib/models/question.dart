@@ -5,6 +5,7 @@ class Question {
   int id;
   String type;
   String header;
+  String image;
   List<QuestionOption> questionOption;
   bool isLocked = false;
   bool isSubmitted = false;
@@ -14,6 +15,7 @@ class Question {
     @required this.type,
     @required this.header,
     @required this.questionOption,
+    this.image
   });
 
   factory Question.fromJson(Map<String, dynamic> question) {
@@ -22,6 +24,7 @@ class Question {
         id: question['id'],
         type: question['type'],
         header: question['header'],
+        image: question['image'],
         questionOption:
             questionOptions.map((f) => QuestionOption.fromJson(f)).toList());
   }
